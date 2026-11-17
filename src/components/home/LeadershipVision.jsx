@@ -1,3 +1,5 @@
+import { asset } from '../../utils/asset';
+
 const ACHIEVEMENTS = [
   { value: '7,500+', label: 'Students trained per year' },
   { value: '200+', label: 'Industrial projects completed' },
@@ -19,7 +21,7 @@ export default function LeadershipVision() {
           <div className="col-lg-5">
             <div className="leadership-portrait">
               <img
-                src="/mohan-kumar.png"
+                src={asset('/mohan-kumar.png')}
                 alt="Mr. Mohan Kumar, Managing Director of PUMO and MONZ"
                 loading="lazy"
                 onLoad={event => event.currentTarget.classList.add('loaded')}

@@ -1,3 +1,4 @@
+import { asset } from '../utils/asset';
 import { useState, useMemo } from 'react';
 import { projects, projectCategories } from '../data/projects';
 
@@ -105,8 +106,8 @@ export default function Projects() {
             All programs include hands-on project work from real industrial and automotive design scenarios.
           </p>
           <div className="d-flex justify-content-center gap-3 flex-wrap">
-            <a href="/courses" className="btn btn-primary px-4 py-2">Explore Courses</a>
-            <a href="/contact" className="btn btn-outline-light px-4 py-2">Enquire Now</a>
+            <a href={asset('/courses')} className="btn btn-primary px-4 py-2">Explore Courses</a>
+            <a href={asset('/contact')} className="btn btn-outline-light px-4 py-2">Enquire Now</a>
           </div>
         </div>
       </section>

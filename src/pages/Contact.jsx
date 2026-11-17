@@ -1,3 +1,4 @@
+import { asset } from '../utils/asset';
 import { FiPhone, FiMail, FiMapPin, FiClock } from 'react-icons/fi';
 import EnquiryForm from '../components/ui/EnquiryForm';
 
@@ -73,7 +74,7 @@ export default function Contact() {
                       'Masters in Automotive Design',
                       'Certified in Automotive Design',
                     ].map((c, i) => (
-                      <a key={i} href="/courses" style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.85rem', transition: 'color 0.3s' }}>
+                      <a key={i} href={asset('/courses')} style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.85rem', transition: 'color 0.3s' }}>
                         → {c}
                       </a>
                     ))}

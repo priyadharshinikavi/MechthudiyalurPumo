@@ -1,45 +1,46 @@
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 import AnimatedSection from '../ui/AnimatedSection';
+import { asset } from '../../utils/asset';
 
 // ── Companies where our students work ──────────────────────
 // Only companies with a `logo` are shown on the page.
 // To add a missing one, put the image in /public/companies/
-// and set `logo: '/companies/<file>'`.
+// and set `logo: asset('/companies/<file>')`.
 // `invert: true` is for white logos (made for dark headers) —
 // it renders them in dark ink so they show on the white cards.
 const COMPANIES = [
-  { name: 'Hyundai', logo: '/logos/hyundai.png' },
-  { name: 'Lokesh Machines Limited', logo: '/companies/lokesh.gif' },
-  { name: 'Hinduja Tech', logo: '/companies/hindujatech.png', invert: true },
-  { name: 'Cognizant', logo: '/companies/cognizant.png' },
-  { name: 'TCS (Tata Consultancy Services)', logo: '/companies/tcs.svg', invert: true },
+  { name: 'Hyundai', logo: asset('/logos/hyundai.png') },
+  { name: 'Lokesh Machines Limited', logo: asset('/companies/lokesh.gif') },
+  { name: 'Hinduja Tech', logo: asset('/companies/hindujatech.png'), invert: true },
+  { name: 'Cognizant', logo: asset('/companies/cognizant.png') },
+  { name: 'TCS (Tata Consultancy Services)', logo: asset('/companies/tcs.svg'), invert: true },
   { name: 'Skava' },
-  { name: 'Wipro', logo: '/companies/wipro.png' },
-  { name: 'Tech Mahindra', logo: '/companies/techmahindra.png' },
+  { name: 'Wipro', logo: asset('/companies/wipro.png') },
+  { name: 'Tech Mahindra', logo: asset('/companies/techmahindra.png') },
   { name: 'Petrus' },
-  { name: 'Bradken', logo: '/companies/bradken.png' },
-  { name: 'Capgemini', logo: '/companies/capgemini.png' },
-  { name: 'GECO Legend', logo: '/logos/geco.png' },
-  { name: 'JBM Group', logo: '/logos/jbm.png' },
-  { name: 'AxisCades', logo: '/companies/axiscades.png', invert: true },
-  { name: 'LMW', logo: '/companies/lmw.png' },
-  { name: 'Pricol', logo: '/companies/pricol.png' },
-  { name: 'Krykard', logo: '/companies/krykard.png' },
+  { name: 'Bradken', logo: asset('/companies/bradken.png') },
+  { name: 'Capgemini', logo: asset('/companies/capgemini.png') },
+  { name: 'GECO Legend', logo: asset('/logos/geco.png') },
+  { name: 'JBM Group', logo: asset('/logos/jbm.png') },
+  { name: 'AxisCades', logo: asset('/companies/axiscades.png'), invert: true },
+  { name: 'LMW', logo: asset('/companies/lmw.png') },
+  { name: 'Pricol', logo: asset('/companies/pricol.png') },
+  { name: 'Krykard', logo: asset('/companies/krykard.png') },
   { name: 'Motherson' },
-  { name: 'Valeo', logo: '/companies/valeo.png' },
-  { name: 'Royal Enfield', logo: '/companies/royal-enfield.png' },
+  { name: 'Valeo', logo: asset('/companies/valeo.png') },
+  { name: 'Royal Enfield', logo: asset('/companies/royal-enfield.png') },
   { name: 'CADOpt Technologies' },
   { name: 'Texmo Precision Castings' },
-  { name: 'Dharani Pumps & Motors', logo: '/companies/dharani.png' },
-  { name: 'Sandfits', logo: '/companies/sandfits.png' },
-  { name: 'Hofincons', logo: '/companies/hofincons.svg' },
+  { name: 'Dharani Pumps & Motors', logo: asset('/companies/dharani.png') },
+  { name: 'Sandfits', logo: asset('/companies/sandfits.png') },
+  { name: 'Hofincons', logo: asset('/companies/hofincons.svg') },
   { name: 'Prasad Group' },
   { name: 'Samyak' },
   { name: 'ELROI Software Solution' },
   { name: 'MAG' },
-  { name: 'Milacron', logo: '/companies/milacron.png' },
-  { name: 'Servion', logo: '/companies/servion.svg', invert: true },
+  { name: 'Milacron', logo: asset('/companies/milacron.png') },
+  { name: 'Servion', logo: asset('/companies/servion.svg'), invert: true },
 ];
 
 const WITH_LOGOS = COMPANIES.filter(c => c.logo);

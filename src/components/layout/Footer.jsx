@@ -1,5 +1,7 @@
 // styles imported globally via App.jsx
 import { Link } from 'react-router-dom';
+import { asset } from '../../utils/asset';
+
 import {
   FaPhone, FaEnvelope, FaMapMarkerAlt,
   FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram,
@@ -19,7 +21,7 @@ export default function Footer() {
               {/* Logo Image */}
               <div className="mb-3">
                 <img
-                  src="/logo.png"
+                  src={asset('/logo.png')}
                   alt="Pumo Technovation"
                   style={{
                     height: '52px',

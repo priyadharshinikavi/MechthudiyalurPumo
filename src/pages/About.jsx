@@ -1,3 +1,4 @@
+import { asset } from '../utils/asset';
 import { FiTarget, FiEye, FiBook, FiMonitor, FiUsers } from 'react-icons/fi';
 
 export default function About() {
@@ -151,7 +152,7 @@ export default function About() {
               profiles, and any certifications or accreditations here. Replace this section with
               your actual institute information.
             </p>
-            <a href="/contact" className="btn btn-primary px-4">Contact Us to Learn More</a>
+            <a href={asset('/contact')} className="btn btn-primary px-4">Contact Us to Learn More</a>
           </div>
         </div>
       </section>

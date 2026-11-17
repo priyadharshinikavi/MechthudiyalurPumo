@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { FaGraduationCap } from 'react-icons/fa';
+import { asset } from '../../utils/asset';
 
 const COUNTRIES = [
-  { name: 'India', phone: '+917305635666', tel: '+917305635666', flag: '/flags/india.svg' },
-  { name: 'UAE', phone: '+971 561016865', tel: '+971561016865', flag: '/flags/uae.svg' },
-  { name: 'Malaysia', phone: '+60162592727', tel: '+60162592727', flag: '/flags/malaysia.svg' },
-  { name: 'Australia', phone: '+61540868663', tel: '+61540868663', flag: '/flags/australia.svg' },
-  { name: 'USA', phone: '+1619203-3624', tel: '+16192033624', flag: '/flags/usa.svg' },
+  { name: 'India', phone: '+917305635666', tel: '+917305635666', flag: asset('/flags/india.svg') },
+  { name: 'UAE', phone: '+971 561016865', tel: '+971561016865', flag: asset('/flags/uae.svg') },
+  { name: 'Malaysia', phone: '+60162592727', tel: '+60162592727', flag: asset('/flags/malaysia.svg') },
+  { name: 'Australia', phone: '+61540868663', tel: '+61540868663', flag: asset('/flags/australia.svg') },
+  { name: 'USA', phone: '+1619203-3624', tel: '+16192033624', flag: asset('/flags/usa.svg') },
 ];
 
 function CountryContacts({ className }) {
@@ -48,7 +49,7 @@ export default function Navbar() {
     <nav className={`main-navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-shell">
         <Link to="/" className="nav-logo" onClick={closeAll}>
-          <img src="/pumo-logo.png" alt="Pumo Technovation" />
+          <img src={asset('/pumo-logo.png')} alt="Pumo Technovation" />
         </Link>
 
         <CountryContacts className="nav-countries" />

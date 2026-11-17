@@ -1,17 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { asset } from '../../utils/asset';
 
 // ── Slides ─────────────────────────────────────────────────
 const SLIDES = [
   {
     id: 1,
-    image: '/banner1.jpg',
+    image: asset('/banner1.jpg'),
     showStats: true,   // stats overlay only on slide 1
   },
   {
     id: 2,
-    image: '/banner2.jpg',
+    image: asset('/banner2.jpg'),
     showStats: false,
   },
 ];

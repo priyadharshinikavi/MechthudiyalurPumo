@@ -1,5 +1,6 @@
 import AnimatedSection from '../ui/AnimatedSection';
 import StudentEmployers from './StudentEmployers';
+import { asset } from '../../utils/asset';
 
 // ── Service Data ───────────────────────────────────────────
 const SERVICES = [
@@ -90,7 +91,7 @@ export default function ServicesSection() {
               <div className="engineering-logo-stage">
                 <span className="engineering-logo-orbit engineering-logo-orbit-outer" aria-hidden="true" />
                 <span className="engineering-logo-orbit engineering-logo-orbit-inner" aria-hidden="true" />
-                <img src="/pumo-logo.png" alt="Pumo Technovation" />
+                <img src={asset('/pumo-logo.png')} alt="Pumo Technovation" />
               </div>
             </AnimatedSection>
           </div>
@@ -112,7 +113,7 @@ export default function ServicesSection() {
               <div className="engineering-logo-stage">
                 <span className="engineering-logo-orbit engineering-logo-orbit-outer" aria-hidden="true" />
                 <span className="engineering-logo-orbit engineering-logo-orbit-inner" aria-hidden="true" />
-                <img src="/pumo-logo.png" alt="Pumo Technovation" />
+                <img src={asset('/pumo-logo.png')} alt="Pumo Technovation" />
               </div>
             </AnimatedSection>
           </div>
