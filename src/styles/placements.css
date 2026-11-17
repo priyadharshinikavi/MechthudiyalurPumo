@@ -1,0 +1,290 @@
+/* ============================================================
+   PLACEMENT SECTION — Course Detail Pages
+   Pumo Technovation Engineering Design Academy
+   ============================================================ */
+
+/* ── Section Wrapper ─────────────────────────────────────── */
+.cd-placements {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8faff 0%, #eef3ff 50%, #f0f4ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cd-placements::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(21,101,192,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cd-placements::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(30,144,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ── Stats Strip ─────────────────────────────────────────── */
+.placement-stats-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(21,101,192,0.10);
+  padding: 24px 32px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  border: 1px solid rgba(21,101,192,0.08);
+}
+
+.placement-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 32px;
+  min-width: 120px;
+}
+
+.ps-number {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--primary-blue, #1565c0);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.ps-label {
+  font-size: 0.75rem;
+  color: var(--gray-text, #6b7280);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.placement-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(21,101,192,0.15);
+  flex-shrink: 0;
+}
+
+/* ── Placement Card ──────────────────────────────────────── */
+.placement-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(21,101,192,0.07);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.placement-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(21,101,192,0.15);
+}
+
+/* ── Photo Area ──────────────────────────────────────────── */
+.placement-photo-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.placement-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.placement-card:hover .placement-photo {
+  transform: scale(1.05);
+}
+
+/* Company Logo Badge ─────────────────────────── */
+.placement-company-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  min-width: 48px;
+  min-height: 32px;
+  justify-content: center;
+}
+
+.placement-company-logo {
+  height: 22px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+.placement-company-fallback {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--primary-blue, #1565c0);
+  text-align: center;
+  max-width: 80px;
+  line-height: 1.2;
+}
+
+/* ── Info Area ───────────────────────────────────────────── */
+.placement-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.placement-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy, #0d1b2a);
+  margin: 0 0 6px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+}
+
+.placement-role {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary-blue, #1565c0);
+  margin-bottom: 4px;
+}
+
+.placement-company-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--gray-text, #6b7280);
+  margin-bottom: 6px;
+}
+
+.placement-package {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: #059669;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.placement-quote {
+  font-size: 0.8rem;
+  color: var(--gray-text, #6b7280);
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 3px solid rgba(21,101,192,0.3);
+  flex: 1;
+}
+
+.placement-batch {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  font-weight: 500;
+  text-align: right;
+  margin-top: auto;
+}
+
+/* ── CTA Strip ───────────────────────────────────────────── */
+.placement-cta-strip {
+  margin-top: 48px;
+  padding: 20px 32px;
+  background: linear-gradient(135deg, var(--primary-blue,#1565c0), var(--accent-blue,#1e90ff));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.placement-cta-strip .btn-primary-custom {
+  background: #fff;
+  color: var(--primary-blue, #1565c0);
+  border: none;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.88rem;
+}
+
+.placement-cta-strip .btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  color: var(--primary-blue, #1565c0);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cd-placements {
+    padding: 56px 0;
+  }
+
+  .placement-stats-strip {
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .placement-stat {
+    padding: 8px 16px;
+    min-width: 80px;
+  }
+
+  .placement-stat-divider {
+    display: none;
+  }
+
+  .placement-photo-wrap {
+    height: 180px;
+  }
+
+  .placement-cta-strip {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ps-number {
+    font-size: 1.3rem;
+  }
+}

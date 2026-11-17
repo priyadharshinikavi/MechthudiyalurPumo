@@ -1,0 +1,339 @@
+/* ============================================================
+   NAVBAR CSS
+   ============================================================ */
+
+.main-navbar {
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  border-bottom: 1px solid #ececec;
+}
+
+.main-navbar.scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 88px;
+  padding: 6px 20px 6px 16px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-right: 14px;
+  border-right: 1px solid #d8d8d8;
+  line-height: 0;
+}
+
+.nav-logo img {
+  height: 60px;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-countries {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  gap: 14px;
+  min-width: 0;
+}
+
+.nav-country {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-country-flag {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+  max-width: none;
+}
+
+.nav-country-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.nav-country-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  color: #1c2434;
+}
+
+.nav-country-phone {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12.5px;
+  color: #8a9099;
+  letter-spacing: 0.01em;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.explore-course-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #e6ac00;
+  border: 1.5px solid #f0b429;
+  border-radius: 8px;
+  padding: 5px 14px 5px 5px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.explore-course-btn:hover {
+  color: #c99200;
+  background: #fffdf5;
+}
+
+.explore-course-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: #111111;
+  color: #f5c400;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.nav-hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #111111;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.nav-hamburger:focus {
+  outline: none;
+}
+
+.nav-drawer {
+  display: none;
+  background: #ffffff;
+  border-top: 1px solid #ececec;
+  padding: 8px 22px 16px;
+}
+
+.nav-drawer.open {
+  display: block;
+}
+
+.nav-menu-countries {
+  display: none;
+}
+
+.nav-drawer-explore {
+  display: none;
+}
+
+.nav-drawer-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-navbar .nav-link {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--dark-text) !important;
+  padding: 12px 14px !important;
+  position: relative;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.main-navbar .nav-link:hover,
+.main-navbar .nav-link.active {
+  color: var(--primary-blue) !important;
+}
+
+.main-navbar .dropdown {
+  position: relative;
+}
+
+.main-navbar .dropdown-menu {
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 230px;
+  margin-top: 0;
+}
+
+.main-navbar .dropdown-item {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.main-navbar .dropdown-item:hover {
+  background: var(--light-blue);
+  color: var(--primary-blue);
+}
+
+.main-navbar .dropdown-toggle::after {
+  margin-left: 4px;
+}
+
+@media (max-width: 1400px) {
+  .nav-logo img {
+    height: 54px;
+  }
+
+  .nav-countries {
+    gap: 10px;
+  }
+
+  .nav-country-flag {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nav-country-name {
+    font-size: 12.5px;
+  }
+
+  .nav-country-phone {
+    font-size: 11px;
+  }
+
+  .explore-course-btn {
+    font-size: 13.5px;
+    gap: 8px;
+    padding-right: 12px;
+  }
+
+  .explore-course-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1240px) {
+  .nav-logo {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .nav-logo img {
+    height: 52px;
+  }
+
+  .nav-countries {
+    display: none;
+  }
+
+  .nav-shell {
+    min-height: 72px;
+  }
+
+  .nav-drawer.open .nav-menu-countries {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 22px;
+    padding: 6px 0 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-shell {
+    min-height: 64px;
+    padding: 6px 14px;
+  }
+
+  .nav-logo img {
+    height: 48px;
+  }
+
+  .nav-actions .explore-course-btn {
+    display: none;
+  }
+
+  .nav-menu-countries {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 4px 12px;
+  }
+
+  .nav-drawer-explore {
+    display: inline-flex;
+    margin: 8px 4px 4px;
+  }
+
+  .nav-drawer-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .main-navbar .nav-link {
+    padding: 10px 4px !important;
+  }
+
+  .main-navbar .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    padding: 0 0 0 12px;
+    border-left: 3px solid var(--light-blue);
+    border-radius: 0;
+    margin: 0 0 6px;
+  }
+}

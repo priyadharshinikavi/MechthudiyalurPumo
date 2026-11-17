@@ -1,0 +1,112 @@
+.leadership-vision-section {
+  padding: 76px 0;
+  background: #f8faff;
+}
+
+.leadership-vision-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.leadership-vision-header h2 {
+  margin: 10px 0 6px;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.leadership-vision-header p {
+  margin: 0;
+  color: var(--gray-text);
+  font-weight: 600;
+}
+
+.leadership-portrait {
+  height: 100%;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.leadership-portrait img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  object-position: center 24%;
+}
+
+.leadership-achievements {
+  height: 100%;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid rgba(21, 101, 192, 0.1);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.leadership-achievements h3 {
+  margin: 12px 0 18px;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  line-height: 1.4;
+}
+
+.leadership-achievements > p {
+  margin-bottom: 28px;
+  color: var(--gray-text);
+  line-height: 1.8;
+}
+
+.leadership-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.leadership-stat {
+  display: flex;
+  min-height: 94px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f3f7fc;
+}
+
+.leadership-stat strong {
+  color: var(--primary-blue);
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.leadership-stat span {
+  margin-top: 5px;
+  color: var(--gray-text);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 991px) {
+  .leadership-portrait,
+  .leadership-portrait img {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 575px) {
+  .leadership-vision-section {
+    padding: 56px 0;
+  }
+
+  .leadership-portrait,
+  .leadership-portrait img {
+    min-height: 360px;
+  }
+
+  .leadership-stats {
+    gap: 8px;
+  }
+
+  .leadership-stat {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,240 @@
+/* ============================================================
+   HERO IMAGE SLIDER — Pumo Technovation
+   Full-width banner slider with animated stats overlay
+   ============================================================ */
+
+/* ── Section Container ───────────────────────────────────── */
+.hero-slider-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  /* Height: tall enough to show banner naturally */
+  max-height: 520px;
+  user-select: none;
+}
+
+/* ── Slide Wrapper (crossfade controller) ────────────────── */
+.hero-slide-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s ease;
+}
+.hero-slide-wrap.fading  { opacity: 0; }
+.hero-slide-wrap.visible { opacity: 1; }
+
+/* ── Individual Slide ────────────────────────────────────── */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  width: 100%;
+}
+.hero-slide.active {
+  display: block;
+  position: relative;
+}
+
+.hero-slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 520px;
+  pointer-events: none;
+}
+
+/* ── Stats Overlay (slide 1 only) ────────────────────────── */
+.hero-stats-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: linear-gradient(
+    to right,
+    rgba(13, 27, 42, 0.92),
+    rgba(21, 101, 192, 0.90),
+    rgba(13, 27, 42, 0.92)
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 2px solid rgba(255, 193, 7, 0.6);
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.hero-stat-box {
+  flex: 1 1 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  transition: background 0.3s ease;
+}
+.hero-stat-box:last-child {
+  border-right: none;
+}
+.hero-stat-box:hover {
+  background: rgba(255, 193, 7, 0.08);
+}
+
+.hsb-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hsb-number {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  color: #ffc107;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.hsb-label {
+  font-size: clamp(0.65rem, 1.3vw, 0.78rem);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 120px;
+}
+
+/* ── Arrow Buttons ───────────────────────────────────────── */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%); /* offset up slightly from center to avoid stats strip */
+  z-index: 20;
+  background: rgba(13, 27, 42, 0.65);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+.hero-arrow:hover {
+  background: rgba(21, 101, 192, 0.85);
+  border-color: rgba(255, 193, 7, 0.6);
+  transform: translateY(-60%) scale(1.1);
+}
+.hero-arrow-left  { left: 16px; }
+.hero-arrow-right { right: 16px; }
+
+/* ── Dot Indicators ──────────────────────────────────────── */
+.hero-dots {
+  position: absolute;
+  bottom: 76px; /* sits just above the stats strip */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  padding: 0;
+}
+.hero-dot.active {
+  background: #ffc107;
+  border-color: #ffc107;
+  transform: scale(1.3);
+}
+.hero-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .hero-slider-section {
+    max-height: 420px;
+  }
+  .hero-slide-img {
+    max-height: 420px;
+  }
+  .hero-stat-box {
+    padding: 12px 14px;
+    flex: 1 1 120px;
+  }
+  .hero-dots {
+    bottom: 66px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-slider-section {
+    max-height: none;
+  }
+  .hero-slide-img {
+    max-height: none;
+    height: auto;
+  }
+  .hero-stats-overlay {
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .hero-stat-box {
+    flex: 1 1 calc(50% - 1px);
+    padding: 12px 10px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-stat-box:nth-child(2n) {
+    border-right: none;
+  }
+  .hero-stat-box:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .hero-dots {
+    bottom: 8px;
+  }
+  .hero-arrow {
+    width: 36px;
+    height: 36px;
+    transform: translateY(-50%);
+  }
+  .hero-arrow:hover {
+    transform: translateY(-50%) scale(1.08);
+  }
+  .hsb-number {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stat-box {
+    padding: 10px 8px;
+  }
+  .hsb-icon {
+    font-size: 1.1rem;
+  }
+  .hsb-number {
+    font-size: 1.2rem;
+  }
+  .hsb-label {
+    font-size: 0.6rem;
+  }
+}

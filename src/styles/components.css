@@ -1,0 +1,296 @@
+/* ============================================================
+   FOOTER CSS
+   ============================================================ */
+
+.main-footer {
+  background: #0a1628;
+  color: rgba(255, 255, 255, 0.75);
+  padding-top: 70px;
+}
+
+.footer-brand .brand-logo-box {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  margin-bottom: 16px;
+}
+.footer-brand .brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.footer-brand .brand-tagline {
+  font-size: 0.82rem;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+.footer-brand p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+.social-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.social-btn:hover {
+  background: var(--primary-blue);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.footer-heading {
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--accent-blue);
+  border-radius: 1px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.88rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-links a::before {
+  content: '›';
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+.footer-links a:hover {
+  color: var(--white);
+  padding-left: 4px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+}
+.footer-contact-item .fc-icon {
+  color: var(--accent-blue);
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.footer-software-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-sw-tag {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+.footer-sw-tag:hover {
+  background: var(--primary-blue);
+  color: white;
+}
+
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 18px 0;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+
+/* ============================================================
+   COMPONENTS CSS — Miscellaneous
+   ============================================================ */
+
+/* Info Section */
+.info-section {
+  padding: 70px 0;
+}
+.info-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Mission/Vision cards */
+.mv-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-card);
+  border-left: 5px solid var(--primary-blue);
+  height: 100%;
+  transition: var(--transition);
+}
+.mv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.mv-card .mv-icon {
+  font-size: 2rem;
+  color: var(--primary-blue);
+  margin-bottom: 16px;
+}
+.mv-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--dark-text);
+}
+.mv-card p {
+  font-size: 0.9rem;
+  color: var(--gray-text);
+  line-height: 1.7;
+}
+
+/* Contact form */
+.contact-info-card {
+  background: linear-gradient(135deg, var(--primary-dark), #1a2744);
+  color: white;
+  border-radius: var(--radius-card);
+  padding: 36px 28px;
+  height: 100%;
+}
+.contact-info-card h4 {
+  color: white;
+  margin-bottom: 24px;
+  font-size: 1.3rem;
+}
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.contact-info-item .ci-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-blue);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.contact-info-item .ci-label {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.contact-info-item .ci-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Map placeholder */
+.map-placeholder {
+  width: 100%;
+  height: 320px;
+  background: linear-gradient(135deg, #1a2744, var(--primary-dark));
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+}
+.map-placeholder svg {
+  font-size: 3rem;
+  color: var(--accent-blue);
+  opacity: 0.6;
+}
+
+/* Industry cards */
+.industry-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid var(--gray-mid);
+}
+.industry-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-blue);
+}
+.industry-card .ind-icon {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+  display: block;
+}
+.industry-card h6 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: 6px;
+}
+.industry-card p {
+  font-size: 0.78rem;
+  color: var(--gray-text);
+  line-height: 1.5;
+  margin: 0;
+}

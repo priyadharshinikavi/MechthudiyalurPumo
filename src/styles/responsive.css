@@ -1,0 +1,148 @@
+/* ============================================================
+   RESPONSIVE CSS — Mobile-first adjustments
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 991px) {
+  .section-pad {
+    padding: 60px 0;
+  }
+  .hero-heading {
+    font-size: 2rem;
+  }
+  .hero-visual {
+    display: none;
+  }
+  .footer-brand {
+    margin-bottom: 32px;
+  }
+  .info-bar .d-flex {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* Mobile Large */
+@media (max-width: 768px) {
+  .section-pad {
+    padding: 50px 0;
+  }
+  .section-header {
+    margin-bottom: 36px;
+  }
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+  .hero-section {
+    padding: 20px 0;
+  }
+  .hero-content {
+    padding: 60px 0 40px;
+  }
+  .hero-heading {
+    font-size: 1.75rem;
+  }
+  .hero-description {
+    font-size: 0.95rem;
+  }
+  .hero-buttons {
+    gap: 10px;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-stats {
+    gap: 20px;
+  }
+  .hero-stat .num {
+    font-size: 1.3rem;
+  }
+  .stats-banner .stat-item .stat-number {
+    font-size: 1.6rem;
+  }
+  .enquiry-card {
+    padding: 24px 18px;
+  }
+  .course-card-actions {
+    flex-direction: column;
+  }
+  .course-card-actions .btn {
+    width: 100%;
+  }
+  .page-banner h1 {
+    font-size: 1.75rem;
+  }
+  .learn-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-social {
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 576px) {
+  html {
+    font-size: 15px;
+  }
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .section-pad {
+    padding: 40px 0;
+  }
+  .hero-heading {
+    font-size: 1.5rem;
+  }
+  .enquiry-section {
+    padding: 50px 0;
+  }
+  .stat-item .stat-number {
+    font-size: 1.5rem;
+  }
+  .filter-pill {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+  .curriculum-accordion .accordion-button {
+    font-size: 0.9rem;
+  }
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+  .footer-bottom p {
+    font-size: 0.75rem;
+  }
+  .hero-float-card {
+    display: none;
+  }
+  .course-card-img {
+    height: 180px;
+  }
+  .project-card-img {
+    height: 170px;
+  }
+  .info-bar {
+    display: none;
+  }
+}
+
+/* Print */
+@media print {
+  .main-navbar,
+  .info-bar,
+  .hero-section,
+  .enquiry-section,
+  .main-footer,
+  .scroll-top-btn {
+    display: none !important;
+  }
+}

@@ -1,0 +1,507 @@
+/* ============================================================
+   SERVICES SECTION + CLIENT LOGOS — Pumo Technovation
+   ============================================================ */
+
+/* ── Services Section ────────────────────────────────────── */
+.services-section {
+  padding: 88px 0;
+  background:
+    radial-gradient(ellipse at 92% 8%, rgba(30, 144, 255, 0.08), transparent 28%),
+    linear-gradient(180deg, #f7faff 0%, #fff 100%);
+}
+
+.services-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 38px;
+}
+
+.services-heading-copy {
+  max-width: 650px;
+}
+
+.services-heading .eyebrow {
+  display: block;
+  color: var(--accent-blue, #1e90ff);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.services-heading h2 {
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0 0 10px;
+}
+
+.services-heading p {
+  color: var(--gray-text, #6b7280);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.services-stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+  padding: 16px 22px;
+  border: 1px solid rgba(21, 101, 192, 0.12);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(18, 54, 91, 0.07);
+}
+
+.services-stat strong {
+  color: var(--primary-blue, #1565c0);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.services-stat span {
+  color: var(--navy, #0d1b2a);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid rgba(13, 27, 42, 0.08);
+  border-radius: 18px;
+  padding: 28px 24px;
+  height: 100%;
+  min-height: 240px;
+  box-shadow: 0 8px 26px rgba(18, 54, 91, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--svc-color, #1565c0);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 38px rgba(18, 54, 91, 0.12);
+  border-color: color-mix(in srgb, var(--svc-color, #1565c0) 38%, white);
+}
+
+.svc-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--svc-color, #1565c0) 8%, white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.svc-icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.svc-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  margin-bottom: 9px;
+}
+
+.svc-desc {
+  font-size: 0.88rem;
+  color: var(--gray-text, #6b7280);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.engineering-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  align-items: center;
+  gap: 48px;
+  margin-top: 56px;
+  padding: clamp(28px, 5vw, 56px);
+  overflow: hidden;
+  border: 1px solid rgba(21, 101, 192, 0.1);
+  border-radius: 24px;
+  background: linear-gradient(115deg, #fff 42%, #f0f6ff 100%);
+  box-shadow: 0 16px 42px rgba(18, 54, 91, 0.07);
+}
+
+.engineering-feature--reverse {
+  margin-top: 32px;
+  background: linear-gradient(245deg, #fff 42%, #f0f6ff 100%);
+}
+
+@media (min-width: 769px) {
+  .engineering-feature--reverse {
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .engineering-feature--reverse .engineering-logo-reveal {
+    order: -1;
+  }
+}
+
+.engineering-feature-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--primary-blue, #1565c0);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.engineering-feature-copy h3 {
+  margin: 0 0 14px;
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(1.5rem, 2.7vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.engineering-feature-copy p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--gray-text, #6b7280);
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.engineering-feature-copy blockquote {
+  margin: 22px 0 0;
+  padding: 3px 0 3px 16px;
+  border-left: 3px solid #f2b51b;
+  color: var(--navy, #0d1b2a);
+  font-size: 0.94rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.engineering-logo-reveal {
+  display: flex;
+  justify-content: center;
+}
+
+.engineering-logo-stage {
+  position: relative;
+  display: grid;
+  width: min(100%, 390px);
+  min-height: 270px;
+  place-items: center;
+  isolation: isolate;
+}
+
+.engineering-logo-stage::before {
+  position: absolute;
+  z-index: -1;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.16), rgba(30, 144, 255, 0));
+  content: '';
+}
+
+.engineering-logo-stage img {
+  width: min(82%, 330px);
+  height: auto;
+  padding: 18px;
+  border: 1px solid rgba(21, 101, 192, 0.09);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 40px rgba(18, 54, 91, 0.12);
+  animation: engineering-logo-float 4.5s ease-in-out infinite;
+}
+
+.engineering-logo-orbit {
+  position: absolute;
+  border: 1px solid rgba(21, 101, 192, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.engineering-logo-orbit-outer {
+  width: 94%;
+  height: 82%;
+  animation: engineering-logo-spin 22s linear infinite;
+}
+
+.engineering-logo-orbit-inner {
+  width: 76%;
+  height: 66%;
+  border-style: dashed;
+  border-color: rgba(242, 181, 27, 0.45);
+  animation: engineering-logo-spin 16s linear infinite reverse;
+}
+
+@keyframes engineering-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes engineering-logo-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Corporate Projects Section ──────────────────────────── */
+.corp-projects-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--navy, #0d1b2a) 0%, #0f2744 60%, #0d1b2a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.corp-projects-section::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(30,144,255,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.corp-project-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 28px 24px;
+  height: 100%;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.corp-project-card:hover {
+  transform: translateY(-5px);
+  background: rgba(30,144,255,0.08);
+  border-color: rgba(30,144,255,0.3);
+}
+
+.corp-proj-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.corp-proj-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  margin-bottom: 8px;
+}
+
+.corp-proj-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.corp-proj-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4ade80;
+  background: rgba(74,222,128,0.12);
+  border: 1px solid rgba(74,222,128,0.3);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+/* ── Client Logos Section ────────────────────────────────── */
+.client-logos-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
+}
+
+/* Marquee */
+.logo-marquee-wrap {
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(21,101,192,0.08);
+  border: 1px solid rgba(21,101,192,0.07);
+  padding: 20px 0;
+  margin-bottom: 8px;
+}
+
+.logo-marquee {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  animation: marquee-scroll 28s linear infinite;
+  width: max-content;
+}
+
+.logo-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-marquee-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px;
+}
+
+.client-logo-img {
+  height: 44px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(30%);
+  opacity: 0.85;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.client-logo-img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* Grid cards */
+.client-logo-card {
+  background: #fff;
+  border: 1px solid rgba(21,101,192,0.09);
+  border-radius: 14px;
+  padding: 18px 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+
+.client-logo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(21,101,192,0.12);
+  border-color: rgba(21,101,192,0.25);
+}
+
+.client-logo-grid-img {
+  height: 48px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  filter: grayscale(20%);
+  opacity: 0.9;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.client-logo-card:hover .client-logo-grid-img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.client-logo-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gray-text, #6b7280);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .services-section,
+  .corp-projects-section,
+  .client-logos-section {
+    padding: 56px 0;
+  }
+
+  .services-heading {
+    align-items: flex-start;
+  }
+
+  .engineering-feature {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .service-card {
+    padding: 24px 20px;
+  }
+
+  .logo-marquee {
+    gap: 24px;
+  }
+
+  .client-logo-img {
+    height: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-heading {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .services-stat {
+    padding: 12px 16px;
+  }
+
+  .engineering-feature {
+    margin-top: 36px;
+    padding: 24px 20px;
+  }
+
+  .engineering-logo-stage {
+    min-height: 220px;
+  }
+
+  .engineering-logo-stage::before {
+    width: 180px;
+    height: 180px;
+  }
+
+  .client-logo-grid-img {
+    height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .engineering-logo-stage img,
+  .engineering-logo-orbit {
+    animation: none;
+  }
+}

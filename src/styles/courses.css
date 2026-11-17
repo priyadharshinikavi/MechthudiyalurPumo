@@ -1,0 +1,205 @@
+/* ============================================================
+   COURSES CSS
+   ============================================================ */
+
+/* Search Bar */
+.course-search-bar {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto 36px;
+}
+.course-search-bar input {
+  width: 100%;
+  padding: 12px 20px 12px 48px;
+  border-radius: 50px;
+  border: 2px solid var(--gray-mid);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  transition: var(--transition);
+  outline: none;
+}
+.course-search-bar input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 4px rgba(30, 144, 255, 0.1);
+}
+.course-search-bar .search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-text);
+  font-size: 1.1rem;
+}
+
+/* Course Card */
+.course-card {
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  background: var(--white);
+  border: 1px solid var(--gray-mid);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.course-card-img {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  position: relative;
+}
+.course-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.course-card:hover .course-card-img img {
+  transform: scale(1.07);
+}
+.course-card-img-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+.course-card-category {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(13, 27, 42, 0.75);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+
+.course-card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.course-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: 10px;
+  font-family: var(--font-heading);
+  line-height: 1.35;
+}
+.course-card-desc {
+  font-size: 0.85rem;
+  color: var(--gray-text);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--gray-text);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.course-meta svg {
+  color: var(--primary-blue);
+  flex-shrink: 0;
+}
+
+.course-software-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.course-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+.course-card-actions .btn {
+  flex: 1;
+  font-size: 0.82rem;
+  padding: 8px 10px;
+}
+
+/* No-results */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray-text);
+}
+.no-results h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--dark-text);
+}
+
+/* Course detail hero */
+.course-detail-banner {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #0a2a5e 100%);
+  padding: 70px 0 50px;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.course-detail-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* What you'll learn */
+.learn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.learn-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--gray-mid);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--dark-text);
+}
+.learn-item .check-icon {
+  color: var(--success);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Skills tags */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.skill-tag {
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+  color: white;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}

@@ -1,0 +1,123 @@
+/* ============================================================
+   ACCREDITATIONS & PARTNERSHIPS — Static Logo Grid
+   Pumo Technovation
+   ============================================================ */
+
+.accreditations-section {
+  padding: 52px 0 44px;
+  background: #fff;
+  border-bottom: 1px solid rgba(21, 101, 192, 0.08);
+}
+
+.accreditations-section h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #0d1b2a;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.acc-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 36px;
+}
+
+/* ── Static Logo Grid ────────────────────────────────────── */
+.acc-logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(21, 101, 192, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.acc-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
+  border-right: 1px solid rgba(21, 101, 192, 0.09);
+  border-bottom: 1px solid rgba(21, 101, 192, 0.09);
+  flex: 0 0 20%;          /* 5 per row on desktop */
+  min-width: 140px;
+  background: #fff;
+  transition: background 0.25s ease;
+}
+
+.acc-logo-box:hover {
+  background: rgba(21, 101, 192, 0.03);
+}
+
+/* Remove right border on every 5th item */
+.acc-logo-box:nth-child(5n) {
+  border-right: none;
+}
+
+/* Remove bottom border on last row items */
+.acc-logo-box:nth-last-child(-n+5) {
+  border-bottom: none;
+}
+
+.acc-logo-img {
+  height: 52px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+  /* No filter — show original colours */
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+/* 4 per row on tablet */
+@media (max-width: 991px) {
+  .acc-logo-box {
+    flex: 0 0 25%;
+    min-width: 110px;
+    padding: 20px 24px;
+  }
+  .acc-logo-box:nth-child(5n)       { border-right: 1px solid rgba(21,101,192,0.09); }
+  .acc-logo-box:nth-last-child(-n+5){ border-bottom: 1px solid rgba(21,101,192,0.09); }
+  .acc-logo-box:nth-child(4n)       { border-right: none; }
+  .acc-logo-box:nth-last-child(-n+2){ border-bottom: none; }
+
+  .acc-logo-img {
+    height: 44px;
+    max-width: 110px;
+  }
+}
+
+/* 3 per row on small tablet */
+@media (max-width: 767px) {
+  .acc-logo-box {
+    flex: 0 0 33.333%;
+    padding: 18px 16px;
+  }
+  /* reset previous overrides */
+  .acc-logo-box:nth-child(4n)        { border-right: 1px solid rgba(21,101,192,0.09); }
+  .acc-logo-box:nth-last-child(-n+2) { border-bottom: 1px solid rgba(21,101,192,0.09); }
+  .acc-logo-box:nth-child(3n)        { border-right: none; }
+  .acc-logo-box:nth-last-child(-n+1) { border-bottom: none; }
+}
+
+/* 2 per row on mobile */
+@media (max-width: 480px) {
+  .acc-logo-box {
+    flex: 0 0 50%;
+    padding: 16px 12px;
+  }
+  .acc-logo-box:nth-child(3n)        { border-right: 1px solid rgba(21,101,192,0.09); }
+  .acc-logo-box:nth-last-child(-n+1) { border-bottom: 1px solid rgba(21,101,192,0.09); }
+  .acc-logo-box:nth-child(2n)        { border-right: none; }
+  .acc-logo-box:nth-last-child(-n+2) { border-bottom: none; }
+
+  .acc-logo-img {
+    height: 36px;
+    max-width: 90px;
+  }
+}
