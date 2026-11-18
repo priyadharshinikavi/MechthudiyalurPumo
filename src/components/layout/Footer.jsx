@@ -19,19 +19,9 @@ export default function Footer() {
           <div className="col-lg-4 col-md-6">
             <div className="footer-brand">
               {/* Logo Image */}
-              <div className="mb-3">
-                <img
-                  src={asset('/logo.png')}
-                  alt="Pumo Technovation"
-                  style={{
-                    height: '52px',
-                    width: 'auto',
-                    objectFit: 'contain',
-                    filter: 'brightness(0) invert(1)',  /* white logo on dark bg */
-                    opacity: 0.92,
-                  }}
-                />
-              </div>
+              <Link to="/" className="footer-logo-card" aria-label="Pumo Technovation home">
+                <img src={asset('/pumo-logo.png')} alt="Pumo Technovation" />
+              </Link>
               <div className="brand-tagline">India's Advanced AI Integrated Tech Campus</div>
               <p style={{ marginTop: 12 }}>
                 India's premier engineering design training institute delivering
