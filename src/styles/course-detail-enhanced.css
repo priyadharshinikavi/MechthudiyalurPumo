@@ -284,6 +284,96 @@
   50% { transform: translateY(8px); opacity: 0.3; }
 }
 
+/* ── Light (white) hero variant with feature image ── */
+.cd-hero.cd-hero--light {
+  min-height: auto; /* beats the mobile 100svh rule further down */
+  color: var(--navy, #0d1b2a);
+  background: #fff;
+}
+.cd-hero--light .cd-hero-grid {
+  background-image:
+    linear-gradient(rgba(21,101,192,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,101,192,0.045) 1px, transparent 1px);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 70%);
+  mask-image: linear-gradient(90deg, #000 0%, transparent 70%);
+}
+.cd-hero--light .cd-hero-content {
+  padding: 56px 0 72px;
+}
+.cd-hero--light .cd-hero-eyebrow {
+  background: var(--light-blue, #e3f2fd);
+  border-color: rgba(21,101,192,0.2);
+  color: var(--primary-blue, #1565c0);
+}
+.cd-hero--light h1 {
+  color: var(--navy, #0d1b2a);
+}
+.cd-hero--light h1 span {
+  background: linear-gradient(90deg, var(--primary-blue, #1565c0), #1e90ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.cd-hero--light h1 span.cd-h1-plain {
+  background: none;
+  color: var(--navy, #0d1b2a);
+  -webkit-text-fill-color: currentColor;
+}
+.cd-hero--light .cd-hero-desc {
+  color: #4b5563;
+}
+.cd-hero--light .cd-meta-item {
+  background: #f5f8fc;
+  border-color: rgba(21,101,192,0.12);
+}
+.cd-hero--light .cd-meta-label {
+  color: #6b7280;
+}
+.cd-hero--light .cd-meta-value {
+  color: var(--navy, #0d1b2a);
+}
+.cd-hero--light .cd-sw-pill {
+  background: #fff;
+  border-color: rgba(21,101,192,0.25);
+  color: var(--primary-blue, #1565c0);
+}
+.cd-hero--light .cd-sw-pill:hover {
+  color: #fff;
+}
+.cd-hero--light .cd-btn-secondary {
+  background: #fff;
+  color: var(--primary-blue, #1565c0);
+  border-color: rgba(21,101,192,0.35);
+}
+.cd-hero--light .cd-btn-secondary:hover {
+  background: var(--light-blue, #e3f2fd);
+  border-color: var(--primary-blue, #1565c0);
+  color: var(--primary-blue, #1565c0);
+}
+.cd-hero--light .cd-scroll-hint {
+  display: none;
+}
+.cd-hero-feature {
+  display: flex;
+  justify-content: center;
+}
+.cd-hero-feature img {
+  width: 118%;            /* a little larger than its column */
+  max-width: 640px;
+  margin-right: -9%;
+  height: auto;
+  animation: cdHeroFloat 6s ease-in-out infinite;
+}
+@keyframes cdHeroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (max-width: 991px) {
+  .cd-hero-feature img { width: 100%; max-width: 460px; margin-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cd-hero-feature img { animation: none; }
+}
+
 /* ── Sticky Enquiry Float Button ── */
 .cd-sticky-cta {
   position: fixed;

@@ -1,0 +1,300 @@
+/* ============================================================
+   CONCEPT OF SHEET METAL
+   ============================================================ */
+
+.sm-section {
+  padding: 80px 0 88px;
+  overflow-x: clip;
+  background:
+    linear-gradient(rgba(21, 101, 192, 0.035) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgba(21, 101, 192, 0.035) 1px, transparent 1px) 0 0 / 32px 32px,
+    #f8fafd;
+}
+
+.sm-title {
+  margin: 0 0 40px;
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.sm-title span { color: var(--primary-blue, #1565c0); }
+.sm-section.in .sm-title { opacity: 1; transform: none; }
+
+/* ── Grid: row 1 = materials | flat → enclosure ; row 2 = 3 cards ── */
+.sm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.sm-pair {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+/* ── Card: folds open like a bent flange ── */
+.sm-card {
+  margin: 0;
+  perspective: 1000px;
+}
+
+.sm-card-img {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(13, 27, 42, 0.12);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fbfcfe, #eef2f7);
+  box-shadow: 0 12px 30px rgba(18, 54, 91, 0.09);
+  transform-origin: bottom center;
+  transform: rotateX(-88deg);
+  opacity: 0;
+  transition:
+    transform 0.9s cubic-bezier(0.34, 1.3, 0.64, 1) calc(var(--i) * 0.12s),
+    opacity 0.4s ease calc(var(--i) * 0.12s),
+    box-shadow 0.4s ease;
+}
+
+.sm-card.in .sm-card-img {
+  transform: none;
+  opacity: 1;
+}
+
+.sm-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sm-card:hover .sm-card-img {
+  box-shadow: 0 22px 44px rgba(18, 54, 91, 0.18);
+}
+
+.sm-card.in:hover .sm-card-img {
+  transform: translateY(-6px);
+}
+
+.sm-card:hover .sm-card-img img {
+  transform: scale(1.06);
+}
+
+.sm-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.7) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.sm-card:hover .sm-shine {
+  transform: translateX(120%);
+  transition: transform 0.9s ease;
+}
+
+.sm-card figcaption {
+  margin-top: 10px;
+  color: #000;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease calc(0.5s + var(--i) * 0.12s);
+}
+
+.sm-card.in figcaption { opacity: 1; }
+
+/* ── Fold connector ── */
+.sm-fold {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #d97706;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.6s;
+}
+
+.sm-fold.in { opacity: 1; }
+
+.sm-fold svg {
+  width: 60px;
+  height: 24px;
+}
+
+.sm-fold-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-dasharray: 6 5;
+  animation: sm-dash 0.9s linear infinite;
+}
+
+.sm-fold span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@keyframes sm-dash { to { stroke-dashoffset: -22; } }
+
+/* ── Topics bar ── */
+.sm-topics {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1180px;
+  margin: 40px auto 0;
+  padding: 20px 24px;
+  border: 1px solid rgba(21, 101, 192, 0.12);
+  border-left: 4px solid #f2b51b;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #f5f9ff, #fff);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease 0.8s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.8s;
+}
+
+.sm-section.in .sm-topics { opacity: 1; transform: none; }
+
+.sm-topics ul {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sm-topics li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition:
+    opacity 0.4s ease calc(1s + var(--i) * 0.1s),
+    transform 0.5s ease calc(1s + var(--i) * 0.1s);
+}
+
+.sm-section.in .sm-topics li { opacity: 1; transform: none; }
+
+.sm-topic-ico {
+  display: flex;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--light-blue, #e3f2fd);
+  color: var(--primary-blue, #1565c0);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s, color 0.3s;
+}
+
+.sm-topic-ico svg { width: 100%; height: 100%; }
+
+.sm-topics li:hover .sm-topic-ico {
+  background: var(--primary-blue, #1565c0);
+  color: #fff;
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.sm-topics strong {
+  display: block;
+  color: var(--navy, #0d1b2a);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.sm-topics small {
+  color: #6b7280;
+  font-size: 0.76rem;
+}
+
+/* Bend demo */
+.sm-bend {
+  flex-shrink: 0;
+  width: 120px;
+  height: 70px;
+}
+
+.sm-bend-ground {
+  stroke: #cbd5e1;
+  stroke-width: 1.2;
+  stroke-dasharray: 3 3;
+}
+
+.sm-bend-base,
+.sm-bend-flange rect {
+  fill: #94a3b8;
+}
+
+.sm-bend-flange {
+  transform-box: view-box;
+  transform-origin: 66px 53px;
+  animation: sm-bend 3.2s ease-in-out infinite;
+}
+
+.sm-bend-flange rect { fill: var(--primary-blue, #1565c0); }
+
+.sm-bend-arc {
+  fill: none;
+  stroke: #f2b51b;
+  stroke-width: 2;
+  stroke-dasharray: 2 3;
+  animation: sm-arc 3.2s ease-in-out infinite;
+}
+
+@keyframes sm-bend {
+  0%, 15% { transform: rotate(0deg); }
+  45%, 65% { transform: rotate(-90deg); }
+  95%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes sm-arc {
+  0%, 15%, 95%, 100% { opacity: 0; }
+  45%, 65% { opacity: 1; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1199px) {
+  .sm-topics { flex-direction: column; align-items: stretch; }
+  .sm-bend { align-self: center; }
+  .sm-topics ul { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 991px) {
+  .sm-grid { grid-template-columns: 1fr 1fr; }
+  .sm-pair { grid-column: 1 / -1; }
+}
+
+@media (max-width: 575px) {
+  .sm-section { padding: 56px 0 60px; }
+  .sm-grid { grid-template-columns: 1fr; gap: 20px; }
+  .sm-pair { grid-template-columns: 1fr; }
+  .sm-fold svg { transform: rotate(90deg); margin: 14px 0; }
+  .sm-topics ul { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sm-card-img, .sm-card figcaption, .sm-title, .sm-topics, .sm-topics li, .sm-fold {
+    transform: none !important; opacity: 1 !important; transition: none !important;
+  }
+  .sm-fold-line, .sm-bend-flange, .sm-bend-arc { animation: none; }
+}

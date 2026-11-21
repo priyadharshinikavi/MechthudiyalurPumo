@@ -30,8 +30,9 @@ export default function Contact() {
                   <div className="ci-icon"><FiPhone /></div>
                   <div>
                     <div className="ci-label">Phone</div>
-                    <div className="ci-value">+91 00000 00000</div>
-                    <div className="ci-value" style={{ opacity: 0.6, fontSize: '0.8rem' }}>Placeholder — Replace with actual number</div>
+                    <div className="ci-value">
+                      <a href="tel:+919787775552" style={{ color: 'inherit' }}>+91 97877 75552</a>
+                    </div>
                   </div>
                 </div>
 
@@ -39,8 +40,7 @@ export default function Contact() {
                   <div className="ci-icon"><FiMail /></div>
                   <div>
                     <div className="ci-label">Email</div>
-                    <div className="ci-value">info@yourinstitute.com</div>
-                    <div className="ci-value" style={{ opacity: 0.6, fontSize: '0.8rem' }}>Placeholder — Replace with actual email</div>
+                    <div className="ci-value">info@pumotechnovation.com</div>
                   </div>
                 </div>
 
@@ -48,8 +48,9 @@ export default function Contact() {
                   <div className="ci-icon"><FiMapPin /></div>
                   <div>
                     <div className="ci-label">Location</div>
-                    <div className="ci-value">[Your Institute Address]</div>
-                    <div className="ci-value" style={{ opacity: 0.6, fontSize: '0.8rem' }}>City, State – PIN Code (Placeholder)</div>
+                    <div className="ci-value"><strong>Coimbatore – Thudiyalur</strong></div>
+                    <div className="ci-value">SF.No:327/2A1C1B, Mettupalayam Road,</div>
+                    <div className="ci-value">Thudiyalur, Coimbatore – 641 034</div>
                   </div>
                 </div>
 

@@ -1,0 +1,125 @@
+/* ============================================================
+   COURSE INTRO BLOCK — logos left, feature image right
+   ============================================================ */
+
+.cib-section {
+  padding: 72px 0 80px;
+  overflow-x: clip; /* slide-in animations must not widen the page */
+  background: #fff;
+}
+
+.cib-title {
+  margin: 0 0 40px;
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  text-align: center;
+}
+
+.cib-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 40px;
+  align-items: stretch;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ── Logos column ─────────────────────────────────────────── */
+.cib-logos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cib-logo-card {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+  padding: 12px;
+  border: 1px solid rgba(21, 101, 192, 0.1);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(18, 54, 91, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cib-logo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(18, 54, 91, 0.13);
+}
+
+.cib-logo-card {
+  position: relative;
+}
+
+/* Logo fills the whole card (keeps its proportions) */
+.cib-logo-card img {
+  position: absolute;
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  max-width: none;
+  object-fit: contain;
+}
+
+/* ── Feature image ────────────────────────────────────────── */
+.cib-image {
+  overflow: hidden;
+  border: 1px solid rgba(13, 27, 42, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(18, 54, 91, 0.16);
+}
+
+.cib-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cib-image:hover img {
+  transform: scale(1.03);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .cib-section {
+    padding: 52px 0 56px;
+  }
+
+  .cib-title {
+    margin-bottom: 24px;
+  }
+
+  /* Image first, logos in a row underneath */
+  .cib-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cib-image {
+    order: -1;
+  }
+
+  .cib-logos {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .cib-logo-card {
+    min-height: 90px;
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .cib-logo-card img {
+    inset: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+  }
+}

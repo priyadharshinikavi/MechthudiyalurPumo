@@ -1,0 +1,272 @@
+/* ============================================================
+   TOOL & DIE DESIGN CONCEPT
+   ============================================================ */
+
+.td-section {
+  padding: 80px 0 88px;
+  overflow-x: clip;
+  background:
+    /* tool-steel plate with bolt holes */
+    radial-gradient(circle, rgba(13, 27, 42, 0.09) 3px, rgba(13, 27, 42, 0.04) 4px, transparent 5px) 0 0 / 90px 90px,
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px 3px),
+    linear-gradient(160deg, #eef1f5 0%, #f8f9fb 50%, #e8ecf1 100%);
+}
+
+/* ── Heading + press animation ── */
+.td-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 44px;
+}
+
+.td-title {
+  margin: 0;
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.td-title span { color: var(--primary-blue, #1565c0); }
+.td-section.in .td-title { opacity: 1; transform: none; }
+
+.td-press {
+  width: 96px;
+  height: 72px;
+  flex-shrink: 0;
+  overflow: hidden; /* keep the moving strip inside the press */
+}
+
+.td-press-frame { fill: #2b3444; }
+.td-die-hole { fill: #0d1b2a; }
+
+.td-punch rect { fill: var(--primary-blue, #1565c0); }
+.td-punch rect + rect { fill: #9aa7b8; }
+
+.td-punch {
+  animation: td-punch 1.6s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+
+.td-strip rect { fill: #c3ccd8; }
+
+.td-strip {
+  animation: td-feed 1.6s steps(1, end) infinite;
+}
+
+.td-blank {
+  fill: #f2b51b;
+  opacity: 0;
+  animation: td-blank 1.6s ease-in infinite;
+}
+
+@keyframes td-punch {
+  0%, 30% { transform: translateY(0); }
+  45% { transform: translateY(12px); }
+  55%, 100% { transform: translateY(0); }
+}
+
+/* strip advances one pitch after each stroke */
+@keyframes td-feed {
+  0% { transform: translateX(0); }
+  60% { transform: translateX(-20px); }
+}
+
+@keyframes td-blank {
+  0%, 44% { opacity: 0; transform: translateY(0); }
+  46% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(22px); }
+  100% { opacity: 0; transform: translateY(26px); }
+}
+
+/* ── Grid: 2 stacked on the left, big photo on the right ── */
+.td-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  grid-template-areas:
+    'a c'
+    'b c';
+  gap: 26px 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ── Stamp-in card ── */
+.td-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.td-card-img {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(13, 27, 42, 0.14);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(18, 54, 91, 0.12);
+  opacity: 0;
+  transform: translateY(-110px) scale(1.04);
+  transition: box-shadow 0.4s ease;
+}
+
+/* big photo keeps its natural ratio, centred against the stacked pair */
+.td-card-c { align-self: center; }
+.td-card-c .td-card-img { flex: none; aspect-ratio: 3 / 2; }
+.td-card-c .td-card-img img { min-height: 0; }
+
+.td-card-img img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: contain;
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.td-card.in .td-card-img {
+  animation: td-stamp 0.75s cubic-bezier(0.55, 0, 1, 0.45) calc(0.2s + var(--i) * 0.35s) both;
+}
+
+/* fast press stroke → impact squash → settle */
+@keyframes td-stamp {
+  0% { opacity: 0; transform: translateY(-110px) scale(1.04); }
+  60% { opacity: 1; transform: translateY(0) scale(1); }
+  70% { transform: translateY(4px) scaleY(0.97) scaleX(1.01); }
+  80% { transform: translateY(-3px) translateX(2px); }
+  88% { transform: translateY(0) translateX(-2px); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* impact shockwave under the card */
+.td-shock {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  width: 60%;
+  height: 10px;
+  margin-left: -30%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(13, 27, 42, 0.35), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.td-card.in .td-shock {
+  animation: td-shock 0.7s ease-out calc(0.65s + var(--i) * 0.35s) both;
+}
+
+@keyframes td-shock {
+  0% { opacity: 0; transform: scaleX(0.4); }
+  8% { opacity: 0.9; transform: scaleX(0.5); }
+  100% { opacity: 0; transform: scaleX(1.8); }
+}
+
+.td-card:hover .td-card-img {
+  box-shadow: 0 24px 50px rgba(18, 54, 91, 0.2);
+}
+
+.td-card:hover .td-card-img img {
+  transform: scale(1.06);
+}
+
+.td-card figcaption {
+  margin-top: 10px;
+  color: #000;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease calc(0.9s + var(--i) * 0.35s);
+}
+
+.td-card.in figcaption { opacity: 1; }
+
+/* ── Points ── */
+.td-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1180px;
+  margin: 40px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.td-points li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(13, 27, 42, 0.1);
+  border-left: 4px solid var(--primary-blue, #1565c0);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--navy, #0d1b2a);
+  font-size: 0.93rem;
+  font-weight: 700;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity 0.5s ease calc(1.5s + var(--i) * 0.15s),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) calc(1.5s + var(--i) * 0.15s),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.td-section.in .td-points li { opacity: 1; transform: none; }
+
+.td-points li:hover {
+  border-left-color: #f2b51b;
+  box-shadow: 0 12px 28px rgba(18, 54, 91, 0.12);
+}
+
+.td-point-ico {
+  display: flex;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 9px;
+  border-radius: 10px;
+  background: #2b3444;
+  color: #fff;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+}
+
+.td-point-ico svg { width: 100%; height: 100%; }
+
+.td-points li:hover .td-point-ico {
+  background: var(--primary-blue, #1565c0);
+  transform: translateY(-3px) rotate(-6deg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .td-points { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 767px) {
+  .td-section { padding: 56px 0 60px; }
+  .td-head { flex-direction: column; gap: 10px; }
+  .td-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'c' 'a' 'b';
+  }
+  .td-card-img img { min-height: 200px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .td-punch, .td-strip, .td-blank { animation: none; }
+  .td-card.in .td-card-img, .td-card.in .td-shock { animation: none; opacity: 1; transform: none; }
+  .td-card-img { opacity: 1; transform: none; }
+  .td-title, .td-card figcaption, .td-points li { opacity: 1; transform: none; transition: none; }
+}

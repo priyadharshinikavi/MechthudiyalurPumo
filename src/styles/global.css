@@ -258,6 +258,7 @@ ul {
   background: linear-gradient(135deg, var(--primary-dark), #1a2744);
   color: var(--white);
   padding: 70px 0;
+  overflow-x: clip; /* g-5 row + slide-in animation caused sideways scroll on phones */
 }
 .enquiry-card {
   background: var(--white);

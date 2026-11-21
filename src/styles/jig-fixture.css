@@ -1,0 +1,291 @@
+/* ============================================================
+   JIG & FIXTURE DESIGN CONCEPT
+   ============================================================ */
+
+.jf-section {
+  --jf-red: #c0262d;
+  padding: 80px 0 88px;
+  overflow-x: clip;
+  background:
+    /* T-slot machine table */
+    linear-gradient(90deg, transparent 0 46px, rgba(13, 27, 42, 0.06) 46px 54px, transparent 54px) 0 0 / 120px 100%,
+    linear-gradient(90deg, transparent 0 42px, rgba(13, 27, 42, 0.025) 42px 58px, transparent 58px) 0 0 / 120px 100%,
+    linear-gradient(180deg, #f6f7f9 0%, #eef1f4 100%);
+}
+
+.jf-title {
+  margin: 0 0 44px;
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.jf-title span { color: var(--primary-blue, #1565c0); }
+.jf-section.in .jf-title { opacity: 1; transform: none; }
+
+/* ── Layout ── */
+.jf-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.jf-right {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* ── Clamp-in card ── */
+.jf-card {
+  position: relative;
+  margin: 0;
+}
+
+.jf-card-img {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(13, 27, 42, 0.14);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(18, 54, 91, 0.12);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: box-shadow 0.4s ease;
+}
+
+.jf-card.in .jf-card-img {
+  animation: jf-squeeze 1.3s cubic-bezier(0.16, 1, 0.3, 1) calc(0.2s + var(--i) * 0.35s) both;
+}
+
+/* appears, gets squeezed by the jaws, then settles */
+@keyframes jf-squeeze {
+  0% { opacity: 0; transform: scale(0.92); }
+  35% { opacity: 1; transform: scale(1.01); }
+  55% { transform: scaleX(0.975) scaleY(1.005); }
+  75% { transform: scaleX(1.005); }
+  100% { opacity: 1; transform: none; }
+}
+
+.jf-card-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jf-card:hover .jf-card-img { box-shadow: 0 24px 50px rgba(18, 54, 91, 0.2); }
+.jf-card:hover .jf-card-img img { transform: scale(1.05); }
+
+/* clamp jaws */
+.jf-jaw {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 16px;
+  height: 64px;
+  margin-top: -32px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #3a4554, #5b6879 50%, #3a4554);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* screw handle on each jaw */
+.jf-jaw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 3px;
+  background: #8b97a8;
+}
+
+.jf-jaw-l { left: -10px; }
+.jf-jaw-l::after { right: 100%; }
+.jf-jaw-r { right: -10px; }
+.jf-jaw-r::after { left: 100%; }
+
+.jf-card.in .jf-jaw-l { animation: jf-jaw-l 1.6s cubic-bezier(0.65, 0, 0.35, 1) calc(0.2s + var(--i) * 0.35s) both; }
+.jf-card.in .jf-jaw-r { animation: jf-jaw-r 1.6s cubic-bezier(0.65, 0, 0.35, 1) calc(0.2s + var(--i) * 0.35s) both; }
+
+@keyframes jf-jaw-l {
+  0% { opacity: 0; transform: translateX(-70px); }
+  20% { opacity: 1; }
+  40%, 62% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-50px); }
+}
+
+@keyframes jf-jaw-r {
+  0% { opacity: 0; transform: translateX(70px); }
+  20% { opacity: 1; }
+  40%, 62% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(50px); }
+}
+
+.jf-card figcaption {
+  margin-top: 10px;
+  color: #000;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease calc(1.1s + var(--i) * 0.35s);
+}
+
+.jf-card.in figcaption { opacity: 1; }
+
+/* ── JIG / FIXTURE tags with mini animations ── */
+.jf-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 8px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  color: var(--jf-red);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease calc(1.2s + var(--i) * 0.35s), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) calc(1.2s + var(--i) * 0.35s);
+}
+
+.jf-card.in .jf-tag { opacity: 1; transform: none; }
+
+.jf-anim {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.jf-plate { fill: #3a4554; }
+.jf-bush { fill: #8b97a8; }
+.jf-work { fill: #f2b51b; }
+.jf-drill-body { fill: #9aa7b8; }
+.jf-flutes { stroke: #3a4554; stroke-width: 1.2; fill: none; }
+
+.jf-drill { animation: jf-plunge 1.8s ease-in-out infinite; }
+.jf-flutes { animation: jf-spin 0.3s linear infinite; }
+
+@keyframes jf-plunge {
+  0%, 15% { transform: translateY(-4px); }
+  55%, 65% { transform: translateY(4px); }
+  100% { transform: translateY(-4px); }
+}
+
+@keyframes jf-spin {
+  to { transform: translateY(5px); }
+}
+
+.jf-lever-arm { fill: var(--jf-red); }
+.jf-pivot { fill: #3a4554; }
+
+.jf-lever {
+  transform-box: view-box;
+  transform-origin: 9px 15px;
+  animation: jf-toggle 2.2s ease-in-out infinite;
+}
+
+@keyframes jf-toggle {
+  0%, 20% { transform: rotate(-40deg); }
+  45%, 75% { transform: rotate(0deg); }
+  100% { transform: rotate(-40deg); }
+}
+
+/* ── Points ── */
+.jf-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jf-points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(13, 27, 42, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--navy, #0d1b2a);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.45s ease calc(1.4s + var(--i) * 0.15s),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) calc(1.4s + var(--i) * 0.15s),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.jf-section.in .jf-points li { opacity: 1; transform: none; }
+
+.jf-points li:hover {
+  border-color: var(--jf-red);
+  box-shadow: 0 10px 24px rgba(192, 38, 45, 0.12);
+}
+
+.jf-lock {
+  display: flex;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(192, 38, 45, 0.1);
+  color: var(--jf-red);
+}
+
+.jf-lock svg { width: 100%; height: 100%; }
+
+/* shackle starts open, then snaps shut */
+.jf-shackle {
+  transform: translateY(-3px);
+  transition: transform 0.35s cubic-bezier(0.34, 1.8, 0.64, 1) calc(1.75s + var(--i) * 0.15s);
+}
+
+.jf-section.in .jf-shackle { transform: none; }
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .jf-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 575px) {
+  .jf-section { padding: 56px 0 60px; }
+  .jf-points { grid-template-columns: 1fr; }
+  .jf-tag { font-size: 0.9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jf-card.in .jf-card-img, .jf-card.in .jf-jaw-l, .jf-card.in .jf-jaw-r,
+  .jf-drill, .jf-flutes, .jf-lever { animation: none; }
+  .jf-card-img { opacity: 1; transform: none; }
+  .jf-title, .jf-card figcaption, .jf-tag, .jf-points li, .jf-shackle { opacity: 1; transform: none; transition: none; }
+}

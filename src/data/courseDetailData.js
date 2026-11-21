@@ -252,7 +252,9 @@ const courseDetailData = {
   // ═══════════════════════════════════════════════════════
   'masters-industrial-design': {
     heroTagline: 'The Complete Industrial Design Engineering Program',
-    heroBg: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=1400&q=80',
+    // White banner with this image on the right
+    heroImage: `${import.meta.env.BASE_URL}courses/masters-industrial-design/robot-cell-hero.webp`,
+    heroBg: `${import.meta.env.BASE_URL}courses/masters-industrial-design/engineering-components-blueprint.webp`,
     overview: {
       title: 'What is Industrial Design Engineering?',
       intro:
@@ -263,7 +265,7 @@ const courseDetailData = {
         { icon: '💼', title: 'Career Impact', desc: 'Industrial design engineers are in constant demand. This program prepares you for CAD Design Engineer, Tool Design Engineer, and Product Design Engineer roles.' },
         { icon: '📐', title: 'Real-World Projects', desc: 'You will design complete industrial machines, valve assemblies, sheet metal enclosures, injection moulds, and jig-fixture systems — not toy exercises.' },
       ],
-      image: 'https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?w=800&q=80',
+      image: `${import.meta.env.BASE_URL}courses/masters-industrial-design/creo-gearbox-mechanism.webp`,
     },
     softwareSections: [
       SOFTWARE_MASTER['AutoCAD'],
@@ -271,12 +273,12 @@ const courseDetailData = {
       SOFTWARE_MASTER['Creo'],
     ],
     projects: [
-      { title: 'Centrifugal Pump Assembly', image: 'https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&q=80', desc: 'Complete multi-part pump assembly with impeller, casing, shaft and bearings — modelled and constrained in SolidWorks.', software: 'SolidWorks', skills: 'Assembly Constraints, BOM, Exploded Views' },
-      { title: 'Sheet Metal Control Panel Enclosure', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80', desc: 'Industrial electrical enclosure designed with accurate K-factor calculations, bend radii, and flat pattern generation.', software: 'SolidWorks / Creo', skills: 'Sheet Metal, Bend Allowance, Flat Pattern' },
-      { title: 'Injection Mould Tool Design', image: 'https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?w=600&q=80', desc: 'Complete 2-plate injection mould with core-cavity split, side cores, runner system, and ejection mechanism.', software: 'Creo', skills: 'Tool & Die Design, Shrinkage Calc, Runner Design' },
-      { title: 'Welding Jig and Fixture', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80', desc: 'Hydraulic welding fixture with 3-2-1 locating principle, Poka-Yoke routing, and pressure calculations.', software: 'SolidWorks', skills: 'Jig & Fixture, Hydraulic Clamps, Poka-Yoke' },
-      { title: 'Industrial Gear Box Housing', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80', desc: 'Multi-feature gearbox housing with boss features, bearing pockets, GD&T annotations, and manufacturing drawings.', software: 'AutoCAD / SolidWorks', skills: 'Part Modelling, GD&T, Engineering Drawing' },
-      { title: 'Valve Body — Reverse Engineering', image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=600&q=80', desc: 'Industrial gate valve reverse engineered from physical measurements using calipers, micrometers, and CMM data.', software: 'Creo', skills: 'Reverse Engineering, Metrology, Quality Control' },
+      { title: 'Centrifugal Pump Assembly', image: `${import.meta.env.BASE_URL}courses/masters-industrial-design/centrifugal-pump.webp`, desc: 'Complete multi-part pump assembly with impeller, casing, shaft and bearings — modelled and constrained in SolidWorks.', software: 'SolidWorks', skills: 'Assembly Constraints, BOM, Exploded Views' },
+      { title: 'Sheet Metal Control Panel Enclosure', image: `${import.meta.env.BASE_URL}courses/masters-industrial-design/sheet-metal-enclosure.webp`, desc: 'Industrial electrical enclosure designed with accurate K-factor calculations, bend radii, and flat pattern generation.', software: 'SolidWorks / Creo', skills: 'Sheet Metal, Bend Allowance, Flat Pattern' },
+      { title: 'Press Tool & Progressive Die', image: `${import.meta.env.BASE_URL}courses/masters-industrial-design/progressive-die-strip.webp`, desc: 'Complete press tool with punch, die block, stripper, guide pillars and a station-by-station strip layout.', software: 'SolidWorks / Creo', skills: 'Tool & Die Design, Strip Layout, Clearance Calc' },
+      { title: 'Welding Jig and Fixture', image: `${import.meta.env.BASE_URL}courses/masters-industrial-design/welding-fixture.webp`, desc: 'Hydraulic welding fixture with 3-2-1 locating principle, Poka-Yoke routing, and pressure calculations.', software: 'SolidWorks', skills: 'Jig & Fixture, Hydraulic Clamps, Poka-Yoke' },
+      { title: 'Industrial Gear Box', image: `${import.meta.env.BASE_URL}courses/masters-industrial-design/creo-gearbox-mechanism.webp`, desc: 'Multi-feature gearbox housing with boss features, bearing pockets, GD&T annotations, and manufacturing drawings.', software: 'AutoCAD / SolidWorks', skills: 'Part Modelling, GD&T, Engineering Drawing' },
+      { title: 'Ball Valve — Reverse Engineering', image: `${import.meta.env.BASE_URL}courses/masters-industrial-design/ball-valve-exploded-bom.webp`, desc: 'Industrial ball valve reverse engineered from physical measurements using calipers, micrometers, and CMM data.', software: 'Creo', skills: 'Reverse Engineering, Metrology, Quality Control' },
     ],
     skills: [
       { icon: '📐', name: 'AutoCAD 2D Drafting' },

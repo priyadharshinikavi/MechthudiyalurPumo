@@ -25,6 +25,24 @@ import './styles/placements.css';
 import './styles/services.css';
 import './styles/accreditations.css';
 import './styles/leadership.css';
+import './styles/course-showcase.css';
+import './styles/course-intro.css';
+import './styles/sketch-constraints.css';
+import './styles/projection.css';
+import './styles/part-modelling.css';
+import './styles/assembly.css';
+import './styles/sheet-metal.css';
+import './styles/weldments.css';
+import './styles/drafting.css';
+import './styles/project-drawing.css';
+import './styles/surface.css';
+import './styles/tool-die.css';
+import './styles/jig-fixture.css';
+import './styles/reverse-eng.css';
+import './styles/gdt.css';
+import './styles/project.css';
+import './styles/industries.css';
+import './styles/section-backgrounds.css'; // keep last: topic backgrounds override the above
 import './styles/employers.css';
 import './styles/chooser.css';
 

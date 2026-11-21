@@ -1,0 +1,294 @@
+/* ============================================================
+   2D SKETCH — DIMENSIONS WITH CONSTRAINTS
+   ============================================================ */
+
+.skc-section {
+  padding: 80px 0 88px;
+  overflow-x: clip; /* slide-in animations must not widen the page */
+  background:
+    linear-gradient(rgba(21, 101, 192, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 101, 192, 0.04) 1px, transparent 1px),
+    #f8fafd;
+  background-size: 32px 32px, 32px 32px, auto;
+}
+
+.skc-head {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.skc-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--light-blue, #e3f2fd);
+  color: var(--primary-blue, #1565c0);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skc-title {
+  margin: 0;
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+  font-weight: 800;
+}
+
+.skc-title span {
+  color: var(--primary-blue, #1565c0);
+}
+
+.skc-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 36px;
+  align-items: start;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ── Left column ──────────────────────────────────────────── */
+.skc-figure {
+  margin: 0 0 28px;
+  overflow: hidden;
+  border: 1px solid rgba(13, 27, 42, 0.1);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 18px 46px rgba(18, 54, 91, 0.1);
+}
+
+.skc-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 1;
+}
+
+.skc-figure figcaption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-top: 1px solid #eef2f7;
+  color: #4b5563;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.skc-live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+}
+
+.skc-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skc-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(21, 101, 192, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--navy, #0d1b2a);
+  font-size: 0.93rem;
+  font-weight: 600;
+  line-height: 1.45;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.skc-points li:hover {
+  border-color: var(--primary-blue, #1565c0);
+  transform: translateX(4px);
+}
+
+.skc-arrow {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--primary-blue, #1565c0);
+  font-size: 1.05rem;
+}
+
+/* ── Right column: panels ─────────────────────────────────── */
+.skc-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skc-panel {
+  border: 1px solid rgba(13, 27, 42, 0.08);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(18, 54, 91, 0.07);
+}
+
+.skc-panel-head {
+  padding: 12px 18px;
+  border-bottom: 1px solid #eef2f7;
+  color: var(--navy, #0d1b2a);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Sketch tools grid */
+.skc-tools {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 14px;
+}
+
+.skc-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: default;
+  transition: all 0.2s ease;
+}
+
+.skc-tool:hover {
+  border-color: rgba(21, 101, 192, 0.25);
+  background: var(--light-blue, #e3f2fd);
+}
+
+.skc-tool-ico {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  color: var(--primary-blue, #1565c0);
+}
+
+.skc-tool-ico svg,
+.skc-rel-ico svg,
+.skc-smart-ico svg {
+  width: 100%;
+  height: 100%;
+}
+
+.skc-tool-name {
+  color: #4b5563;
+  font-size: 0.68rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Smart Dimension */
+.skc-smart {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-left: 4px solid #f2b51b;
+}
+
+.skc-smart-ico {
+  display: flex;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  padding: 10px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-blue, #1e90ff), var(--primary-blue, #1565c0));
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(21, 101, 192, 0.3);
+}
+
+.skc-smart-title {
+  color: var(--navy, #0d1b2a);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.skc-smart-sub {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* Relations list */
+.skc-relations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 8px;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+}
+
+.skc-relations li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.skc-relations li:hover {
+  background: var(--light-blue, #e3f2fd);
+}
+
+.skc-rel-ico {
+  display: flex;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  padding: 3px;
+  border: 1px solid rgba(21, 101, 192, 0.2);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--primary-blue, #1565c0);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .skc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skc-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skc-side .skc-smart {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .skc-section {
+    padding: 56px 0 60px;
+  }
+
+  .skc-points,
+  .skc-side {
+    grid-template-columns: 1fr;
+  }
+}

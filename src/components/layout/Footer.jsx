@@ -76,11 +76,15 @@ export default function Footer() {
             <h6 className="footer-heading">Contact Us</h6>
             <div className="footer-contact-item">
               <FaMapMarkerAlt className="fc-icon" />
-              <span>[Your Institute Address]<br />City, State – PIN Code</span>
+              <span>
+                <strong>Coimbatore – Thudiyalur</strong><br />
+                SF.No:327/2A1C1B, Mettupalayam Road,<br />
+                Thudiyalur, Coimbatore – 641 034
+              </span>
             </div>
             <div className="footer-contact-item">
               <FaPhone className="fc-icon" />
-              <span>+91 00000 00000</span>
+              <a href="tel:+919787775552" style={{ color: 'inherit' }}>+91 97877 75552</a>
             </div>
             <div className="footer-contact-item">
               <FaEnvelope className="fc-icon" />

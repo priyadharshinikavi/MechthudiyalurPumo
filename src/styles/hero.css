@@ -238,3 +238,226 @@
     font-size: 0.6rem;
   }
 }
+
+/* ============================================================
+   PLACEMENT BANNER — first hero slide (coded, not an image)
+   Same 1024×365 proportion as the image banners.
+   ============================================================ */
+.pb-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1024 / 365;
+  max-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3%;
+  padding: 0 7% 0 8%;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 78% 50%, rgba(41, 98, 255, 0.55), transparent 55%),
+    linear-gradient(115deg, #071436 0%, #0d2a6e 55%, #1340a8 100%);
+}
+/* Gold + blue brush streaks echoing the posters */
+.pb-banner::before,
+.pb-banner::after {
+  content: '';
+  position: absolute;
+  height: 34%;
+  width: 70%;
+  right: -8%;
+  border-radius: 999px;
+  transform: rotate(-24deg);
+  filter: blur(2px);
+  pointer-events: none;
+}
+.pb-banner::before {
+  top: 4%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.55), transparent);
+}
+.pb-banner::after {
+  bottom: -2%;
+  right: 2%;
+  background: linear-gradient(90deg, transparent, rgba(56, 132, 255, 0.5), transparent);
+}
+.pb-glow {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 55%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* ── Copy ── */
+.pb-copy {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 48%;
+  max-width: 560px;
+}
+.pb-eyebrow {
+  display: inline-block;
+  font-size: clamp(0.62rem, 1vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #ffd54f;
+  background: rgba(255, 193, 7, 0.12);
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  padding: 0.35em 0.9em;
+  border-radius: 999px;
+  margin-bottom: 0.9vw;
+}
+.pb-title {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.3rem, 3.3vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0 0 0.6vw;
+  color: #fff;
+}
+.pb-title span { color: #ffc107; }
+.pb-sub {
+  font-size: clamp(0.72rem, 1.15vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 1.3vw;
+}
+.pb-chips {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5vw;
+  display: flex;
+  gap: 0.8vw;
+  flex-wrap: wrap;
+}
+.pb-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.5em 0.95em;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+  font-size: clamp(0.62rem, 0.95vw, 0.88rem);
+}
+.pb-chip strong {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-size: 1.55em;
+  font-weight: 800;
+  color: #ffc107;
+  line-height: 1;
+  white-space: nowrap;
+}
+.pb-chip span {
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.9);
+}
+.pb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: clamp(0.7rem, 1vw, 0.95rem);
+  font-weight: 700;
+  color: #0d1b2a;
+  background: #ffc107;
+  padding: 0.7em 1.4em;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255, 193, 7, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.pb-cta:hover {
+  color: #0d1b2a;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 193, 7, 0.42);
+}
+
+/* ── Posters ── */
+.pb-posters {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  height: 86%;
+  display: flex;
+  align-items: center;
+  gap: 2.2vw;
+}
+.pb-poster {
+  height: 100%;
+  aspect-ratio: 772 / 1000;
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.35s ease;
+}
+.pb-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.pb-poster-1 { transform: rotate(-3deg); }
+.pb-poster-2 { transform: rotate(3deg) translateY(4%); }
+.hero-slide.active .pb-poster-1 { animation: pb-rise 0.8s ease both; }
+.hero-slide.active .pb-poster-2 { animation: pb-rise-2 0.8s 0.15s ease both; }
+.pb-poster:hover { transform: rotate(0) scale(1.04); }
+
+@keyframes pb-rise {
+  from { opacity: 0; transform: rotate(-3deg) translateY(12%); }
+  to   { opacity: 1; transform: rotate(-3deg); }
+}
+@keyframes pb-rise-2 {
+  from { opacity: 0; transform: rotate(3deg) translateY(16%); }
+  to   { opacity: 1; transform: rotate(3deg) translateY(4%); }
+}
+
+@media (max-width: 991px) {
+  .pb-banner { max-height: 420px; padding: 0 6% 0 7%; }
+}
+
+/* Phones: stack text above the two posters */
+@media (max-width: 767px) {
+  .pb-banner {
+    aspect-ratio: auto;
+    max-height: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 28px 16px 44px;
+    gap: 22px;
+    text-align: center;
+  }
+  .pb-copy { max-width: none; }
+  .pb-eyebrow { margin-bottom: 10px; }
+  .pb-title { font-size: 1.55rem; margin-bottom: 6px; }
+  .pb-sub { font-size: 0.85rem; margin-bottom: 14px; }
+  .pb-chips { justify-content: center; gap: 8px; margin-bottom: 16px; }
+  .pb-chip { font-size: 0.72rem; text-align: left; }
+  .pb-cta { font-size: 0.85rem; }
+  .pb-posters {
+    height: auto;
+    justify-content: center;
+    gap: 14px;
+  }
+  .pb-poster {
+    height: auto;
+    width: min(44%, 220px);
+    border-width: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.active .pb-poster-1,
+  .hero-slide.active .pb-poster-2 { animation: none; }
+}
+
+/* Slides without the stats strip: dots sit at the bottom edge */
+.hero-slider-section.no-stats .hero-dots { bottom: 12px; }

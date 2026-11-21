@@ -2,9 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { asset } from '../../utils/asset';
+import PlacementBanner from './PlacementBanner';
 
 // ── Slides ─────────────────────────────────────────────────
 const SLIDES = [
+  {
+    id: 'placements',
+    custom: true,      // coded banner — International Placement Achievers
+    showStats: false,
+  },
   {
     id: 1,
     image: asset('/banner1.jpg'),
@@ -92,7 +98,7 @@ export default function Hero() {
   const slide = SLIDES[current];
 
   return (
-    <section className="hero-slider-section">
+    <section className={`hero-slider-section ${slide.showStats ? "" : "no-stats"}`}>
 
       {/* ── Slides ─────────────────────────────────────── */}
       <div className={`hero-slide-wrap ${animating ? 'fading' : 'visible'}`}>
@@ -101,12 +107,16 @@ export default function Hero() {
             key={s.id}
             className={`hero-slide ${i === current ? 'active' : ''}`}
           >
-            <img
-              src={s.image}
-              alt={`Pumo Technovation banner ${s.id}`}
-              className="hero-slide-img"
-              draggable="false"
-            />
+            {s.custom ? (
+              <PlacementBanner />
+            ) : (
+              <img
+                src={s.image}
+                alt={`Pumo Technovation banner ${s.id}`}
+                className="hero-slide-img"
+                draggable="false"
+              />
+            )}
           </div>
         ))}
       </div>

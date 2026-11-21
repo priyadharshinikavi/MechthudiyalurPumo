@@ -18,6 +18,43 @@ import SoftwareSection from '../components/ui/SoftwareSection';
 import EnquiryForm from '../components/ui/EnquiryForm';
 import FAQ from '../components/ui/FAQ';
 import PlacementSection from '../components/ui/PlacementSection';
+import CourseShowcase from '../components/ui/CourseShowcase';
+import CourseIntroBlock from '../components/ui/CourseIntroBlock';
+import SketchConstraintsSection from '../components/ui/SketchConstraintsSection';
+import ProjectionSection from '../components/ui/ProjectionSection';
+import PartModellingSection from '../components/ui/PartModellingSection';
+import AssemblySection from '../components/ui/AssemblySection';
+import SheetMetalSection from '../components/ui/SheetMetalSection';
+import WeldmentsSection from '../components/ui/WeldmentsSection';
+import DraftingSection from '../components/ui/DraftingSection';
+import ProjectDrawingSection from '../components/ui/ProjectDrawingSection';
+import SurfaceSection from '../components/ui/SurfaceSection';
+import ToolDieSection from '../components/ui/ToolDieSection';
+import JigFixtureSection from '../components/ui/JigFixtureSection';
+import ReverseEngSection from '../components/ui/ReverseEngSection';
+import GdtSection from '../components/ui/GdtSection';
+import ProjectSection from '../components/ui/ProjectSection';
+import IndustriesSection from '../components/ui/IndustriesSection';
+import { midShowcase, midIntro } from '../data/mastersIndustrialShowcase';
+
+// Course-specific design showcases (add more courses here)
+const SHOWCASES = {
+  'masters-industrial-design': midShowcase,
+};
+
+// Course-specific intro block: logos left, feature image right
+const INTROS = {
+  'masters-industrial-design': midIntro,
+};
+
+// Sections removed from specific course pages (ids match NAV_SECTIONS)
+const HIDDEN_SECTIONS = {
+  // 'nav' = the sticky section-menu bar under the banner
+  'masters-industrial-design': [
+    'overview', 'software', 'curriculum', 'nav',
+    'showcase', 'projects', 'skills', 'careers', 'placements', 'faq',
+  ],
+};
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 import '../styles/course-detail-enhanced.css';
@@ -121,6 +158,7 @@ const NAV_SECTIONS = [
   { id: 'overview',  label: '📖 Overview' },
   { id: 'software',  label: '🖥️ Software' },
   { id: 'curriculum', label: '📚 Curriculum' },
+  { id: 'showcase',  label: '🖼️ Showcase', showcaseOnly: true },
   { id: 'projects',  label: '🏗️ Projects' },
   { id: 'skills',    label: '⚡ Skills' },
   { id: 'careers',   label: '💼 Careers' },
@@ -128,8 +166,11 @@ const NAV_SECTIONS = [
   { id: 'enquiry',   label: '✉️ Enquire' },
 ];
 
-function SectionNav() {
-  const [active, setActive] = useState('overview');
+function SectionNav({ hasShowcase, hidden }) {
+  const sections = NAV_SECTIONS.filter(
+    (s) => (!s.showcaseOnly || hasShowcase) && !hidden.has(s.id),
+  );
+  const [active, setActive] = useState(sections[0]?.id);
 
   const scrollTo = (id) => {
     const el = document.getElementById(`cd-${id}`);
@@ -145,7 +186,7 @@ function SectionNav() {
     <div className="cd-section-nav">
       <div className="container">
         <div className="cd-section-nav-inner">
-          {NAV_SECTIONS.map(({ id, label }) => (
+          {sections.map(({ id, label }) => (
             <button
               key={id}
               className={`cd-nav-pill ${active === id ? 'active' : ''}`}
@@ -191,6 +232,12 @@ export default function CourseDetails() {
   const projects = detail.projects || [];
   const skills = detail.skills || [];
   const placements = PLACEMENTS[id] || [];
+  const showcase = SHOWCASES[id] || [];
+  const hidden = new Set(HIDDEN_SECTIONS[id] || []);
+  const lightHero = Boolean(detail.heroImage); // white banner with a feature image
+  const exploreTarget = !hidden.has('curriculum')
+    ? 'cd-curriculum'
+    : showcase.length > 0 && !hidden.has('showcase') ? 'cd-showcase' : 'cd-intro';
   const overview = detail.overview || {};
 
   const careerIcons = ['💼', '🏭', '🔩', '🚗', '⚙️', '🎯', '🛠️', '🔌', '📐'];
@@ -198,13 +245,17 @@ export default function CourseDetails() {
   return (
     <main>
       {/* ── SECTION 1: HERO ─────────────────────────── */}
-      <section className="cd-hero">
-        {/* Background Image */}
-        <div
-          className={`cd-hero-bg ${bgLoaded ? 'loaded' : ''}`}
-          style={{ backgroundImage: `url(${detail.heroBg || course.image})` }}
-        />
-        <div className="cd-hero-overlay" />
+      <section className={`cd-hero ${lightHero ? 'cd-hero--light' : ''}`}>
+        {/* Background Image (dark theme only) */}
+        {!lightHero && (
+          <>
+            <div
+              className={`cd-hero-bg ${bgLoaded ? 'loaded' : ''}`}
+              style={{ backgroundImage: `url(${detail.heroBg || course.image})` }}
+            />
+            <div className="cd-hero-overlay" />
+          </>
+        )}
         <div className="cd-hero-grid" />
 
         <div className="container cd-hero-content">
@@ -212,17 +263,17 @@ export default function CourseDetails() {
           <Link
             to="/courses"
             className="d-inline-flex align-items-center gap-2 mb-4"
-            style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', fontWeight: 600 }}
+            style={{ color: lightHero ? '#5b6474' : 'rgba(255,255,255,0.6)', fontSize: '0.85rem', fontWeight: 600 }}
           >
             <FiArrowLeft size={14} /> All Courses
           </Link>
 
-          <div className="row">
-            <div className="col-lg-8">
+          <div className="row align-items-center g-5">
+            <div className={lightHero ? 'col-lg-7' : 'col-lg-8'}>
               {/* Eyebrow */}
               <div className="cd-hero-eyebrow">
                 <span className={`badge-${course.badgeType}`}
-                  style={{ background: 'transparent', border: 'none', padding: 0, fontSize: '0.78rem', color: '#60b4ff', fontWeight: 700 }}
+                  style={{ background: 'transparent', border: 'none', padding: 0, fontSize: '0.78rem', color: lightHero ? 'var(--primary-blue)' : '#60b4ff', fontWeight: 700 }}
                 >
                   {course.badge}
                 </span>
@@ -235,12 +286,12 @@ export default function CourseDetails() {
                 {course.title.split(' ').map((word, i) =>
                   ['Industrial', 'Automotive', 'Masters', 'Certified'].includes(word)
                     ? <span key={i}>{word} </span>
-                    : <span key={i} style={{ color: '#fff' }}>{word} </span>
+                    : <span key={i} className={lightHero ? 'cd-h1-plain' : undefined} style={lightHero ? undefined : { color: '#fff' }}>{word} </span>
                 )}
               </h1>
 
               {detail.heroTagline && (
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', fontWeight: 500, marginBottom: 20 }}>
+                <p style={{ color: lightHero ? '#5b6474' : 'rgba(255,255,255,0.6)', fontSize: '0.95rem', fontWeight: 500, marginBottom: 20 }}>
                   {detail.heroTagline}
                 </p>
               )}
@@ -282,13 +333,22 @@ export default function CourseDetails() {
                 <button
                   className="cd-btn-secondary"
                   onClick={() => {
-                    document.getElementById('cd-curriculum')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById(exploreTarget)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
                 >
-                  <FiBookOpen size={16} /> Explore Curriculum
+                  <FiBookOpen size={16} /> {exploreTarget === 'cd-curriculum' ? 'Explore Curriculum' : exploreTarget === 'cd-showcase' ? 'Explore Designs' : 'Explore Course'}
                 </button>
               </div>
             </div>
+
+            {/* Feature image (light theme) */}
+            {lightHero && (
+              <div className="col-lg-5">
+                <div className="cd-hero-feature">
+                  <img src={detail.heroImage} alt={`${course.title} — hands-on training at Pumo Technovation`} />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -300,14 +360,71 @@ export default function CourseDetails() {
       </section>
 
       {/* Sticky Section Nav */}
-      <SectionNav />
+      {!hidden.has('nav') && (
+        <SectionNav key={id} hasShowcase={showcase.length > 0} hidden={hidden} />
+      )}
 
       {/* Sticky Enquiry Button */}
       <Link to="/contact" className="cd-sticky-cta">
         <FiMessageSquare size={15} /> Enquire Now
       </Link>
 
+      {/* ── INTRO: software logos + feature image ───── */}
+      {INTROS[id] && (
+        <CourseIntroBlock title={course.title} {...INTROS[id]} />
+      )}
+
+      {/* ── 2D SKETCH: dimensions with constraints ──── */}
+      {INTROS[id]?.sketchImage && (
+        <SketchConstraintsSection image={INTROS[id].sketchImage} />
+      )}
+
+      {/* ── 1st & 3rd ANGLE OF PROJECTION ─────────────── */}
+      {INTROS[id]?.showProjection && <ProjectionSection />}
+
+      {/* ── CONCEPT OF ISOMETRIC / PART MODEL ─────────── */}
+      {INTROS[id]?.partModelling && (
+        <PartModellingSection {...INTROS[id].partModelling} />
+      )}
+
+      {/* ── CONCEPT OF ASSEMBLY ───────────────────────── */}
+      {INTROS[id]?.assembly && <AssemblySection {...INTROS[id].assembly} />}
+
+      {/* ── CONCEPT OF SHEET METAL ────────────────────── */}
+      {INTROS[id]?.sheetMetal && <SheetMetalSection images={INTROS[id].sheetMetal} />}
+
+      {/* ── WELDMENTS ─────────────────────────────────── */}
+      {INTROS[id]?.weldments && <WeldmentsSection images={INTROS[id].weldments} />}
+
+      {/* ── CONCEPT OF DRAFTING ───────────────────────── */}
+      {INTROS[id]?.drafting && <DraftingSection images={INTROS[id].drafting} />}
+
+      {/* ── PROJECT DRAWING (universal coupling) ──────── */}
+      {INTROS[id]?.projectDrawing && <ProjectDrawingSection {...INTROS[id].projectDrawing} />}
+
+      {/* ── CONCEPT OF SURFACE ────────────────────────── */}
+      {INTROS[id]?.surface && <SurfaceSection images={INTROS[id].surface} />}
+
+      {/* ── TOOL & DIE DESIGN CONCEPT ─────────────────── */}
+      {INTROS[id]?.toolDie && <ToolDieSection images={INTROS[id].toolDie} />}
+
+      {/* ── JIG & FIXTURE DESIGN CONCEPT ──────────────── */}
+      {INTROS[id]?.jigFixture && <JigFixtureSection images={INTROS[id].jigFixture} />}
+
+      {/* ── REVERSE ENGINEERING ───────────────────────── */}
+      {INTROS[id]?.reverseEng && <ReverseEngSection images={INTROS[id].reverseEng} />}
+
+      {/* ── STUDY OF GD&T ─────────────────────────────── */}
+      {INTROS[id]?.gdt && <GdtSection {...INTROS[id].gdt} />}
+
+      {/* ── PROJECT (Creo gearbox mechanism) ──────────── */}
+      {INTROS[id]?.project && <ProjectSection {...INTROS[id].project} />}
+
+      {/* ── INDUSTRIES ────────────────────────────────── */}
+      {INTROS[id]?.industries && <IndustriesSection industries={INTROS[id].industries} />}
+
       {/* ── SECTION 2: OVERVIEW ─────────────────────── */}
+      {!hidden.has('overview') && (
       <section id="cd-overview" className="cd-overview">
         <div className="container">
           <div className="row align-items-center g-5">
@@ -355,8 +472,10 @@ export default function CourseDetails() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── SECTION 3 + 4: SOFTWARE SECTIONS + VIDEOS ── */}
+      {!hidden.has('software') && (
       <div id="cd-software">
         {softwareSections.length > 0 ? (
           softwareSections.map((sw, idx) => (
@@ -380,8 +499,10 @@ export default function CourseDetails() {
           </section>
         )}
       </div>
+      )}
 
       {/* ── SECTION 5: CURRICULUM ───────────────────── */}
+      {!hidden.has('curriculum') && (
       <section id="cd-curriculum" className="cd-curriculum-wrap">
         <div className="container">
           <AnimatedSection>
@@ -398,9 +519,15 @@ export default function CourseDetails() {
           </div>
         </div>
       </section>
+      )}
+
+      {/* ── DESIGN SHOWCASE (course-specific image gallery) ── */}
+      {showcase.length > 0 && !hidden.has('showcase') && (
+        <CourseShowcase chapters={showcase} courseTitle={course.title} />
+      )}
 
       {/* ── SECTION 7: PROJECTS ─────────────────────── */}
-      {projects.length > 0 && (
+      {projects.length > 0 && !hidden.has('projects') && (
         <section id="cd-projects" className="cd-projects">
           <div className="container">
             <AnimatedSection>
@@ -441,7 +568,7 @@ export default function CourseDetails() {
       )}
 
       {/* ── SECTION 8: SKILLS ───────────────────────── */}
-      {skills.length > 0 && (
+      {skills.length > 0 && !hidden.has('skills') && (
         <section id="cd-skills" className="cd-skills">
           <div className="container">
             <AnimatedSection>
@@ -472,6 +599,7 @@ export default function CourseDetails() {
       )}
 
       {/* ── SECTION 9: CAREERS ──────────────────────── */}
+      {!hidden.has('careers') && (
       <section id="cd-careers" className="cd-careers">
         <div className="container">
           <AnimatedSection>
@@ -504,12 +632,16 @@ export default function CourseDetails() {
           </div>
         </div>
       </section>
+      )}
 
       {/* -- PLACEMENTS SECTION -- */}
-      <PlacementSection placements={placements} courseTitle={course.title} />
+      {!hidden.has('placements') && (
+        <PlacementSection placements={placements} courseTitle={course.title} />
+      )}
 
 
       {/* ── SECTION 10: FAQ + ENQUIRY ────────────────── */}
+      {!hidden.has('faq') && (
       <section id="cd-enquiry" className="section-pad">
         <div className="container">
           <AnimatedSection>
@@ -517,6 +649,7 @@ export default function CourseDetails() {
           </AnimatedSection>
         </div>
       </section>
+      )}
 
       <section className="enquiry-section">
         <div className="container">

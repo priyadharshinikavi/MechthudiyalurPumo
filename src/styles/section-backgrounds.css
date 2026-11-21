@@ -1,0 +1,75 @@
+/* ============================================================
+   TOPIC-THEMED SECTION BACKGROUNDS (Masters in Industrial Design)
+   Each background is a faint pattern that matches its heading.
+   Loaded last so it overrides each section's base background.
+   ============================================================ */
+
+/* ── Masters in Industrial Design → engineering gears ── */
+section#cd-intro {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' fill='none' stroke='%231565c0' stroke-opacity='0.07'%3E%3Ccircle cx='80' cy='80' r='44' stroke-width='12' stroke-dasharray='7 7'/%3E%3Ccircle cx='80' cy='80' r='34' stroke-width='2'/%3E%3Ccircle cx='80' cy='80' r='11' stroke-width='2'/%3E%3Ccircle cx='238' cy='226' r='30' stroke-width='9' stroke-dasharray='6 6'/%3E%3Ccircle cx='238' cy='226' r='22' stroke-width='2'/%3E%3Ccircle cx='238' cy='226' r='7' stroke-width='2'/%3E%3C/svg%3E") 0 0 / 320px 320px,
+    radial-gradient(circle at 85% 15%, rgba(21, 101, 192, 0.06), transparent 45%),
+    #fff;
+}
+
+/* ── 2D Sketch Dimensions With Constraints → sketch grid + construction geometry ── */
+section#cd-sketch {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360' fill='none' stroke='%231565c0' stroke-opacity='0.09' stroke-width='1.4'%3E%3Ccircle cx='110' cy='120' r='60' stroke-dasharray='6 5'/%3E%3Cpath d='M110 60v120M50 120h120' stroke-dasharray='14 4 2 4'/%3E%3Cpath d='M220 260h110M220 252v16M330 252v16'/%3E%3Cpath d='M228 260l-8-4v8zM322 260l8-4v8z' fill='%231565c0' fill-opacity='0.09'/%3E%3Ccircle cx='110' cy='120' r='3' fill='%231565c0' fill-opacity='0.12'/%3E%3C/svg%3E") 0 0 / 360px 360px,
+    linear-gradient(rgba(21, 101, 192, 0.045) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgba(21, 101, 192, 0.045) 1px, transparent 1px) 0 0 / 32px 32px,
+    #f8fafd;
+}
+
+/* ── 1st & 3rd Angle of Projection → projection symbol + centre lines ── */
+section#cd-projection {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' fill='none' stroke='%230d1b2a' stroke-opacity='0.06' stroke-width='1.6'%3E%3Ccircle cx='70' cy='70' r='34'/%3E%3Ccircle cx='70' cy='70' r='15'/%3E%3Cpath d='M118 50l52 -12v64l-52 -12z'/%3E%3Cpath d='M20 70h170M70 20v100' stroke-dasharray='12 4 2 4'/%3E%3Cpath d='M0 230h300' stroke-dasharray='12 4 2 4'/%3E%3C/svg%3E") 0 0 / 300px 300px,
+    linear-gradient(180deg, #f6f6f8, #f1f2f5);
+}
+
+/* ── Concept of Isometric / Part Model → isometric grid ── */
+section#cd-part-modelling {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='27.713' fill='none' stroke='%231565c0' stroke-opacity='0.08' stroke-width='1'%3E%3Cpath d='M0 0L48 27.713M48 0L0 27.713M0 0V27.713M24 0V27.713'/%3E%3C/svg%3E") 0 0 / 48px 27.713px,
+    linear-gradient(180deg, #fff, #f7f9fc);
+}
+
+/* ── Concept Of Assembly → nuts & bolts ── */
+section#cd-assembly {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke='%231565c0' stroke-opacity='0.08' stroke-width='1.6'%3E%3Cpolygon points='60,32 84,46 84,74 60,88 36,74 36,46'/%3E%3Ccircle cx='60' cy='60' r='12'/%3E%3Cpolygon points='180,152 198,162.5 198,183.5 180,194 162,183.5 162,162.5'/%3E%3Ccircle cx='180' cy='173' r='9'/%3E%3Cpath d='M170 40h40M170 50h40M170 40v10M210 40v10M210 45h-30' /%3E%3Ccircle cx='60' cy='190' r='16'/%3E%3Ccircle cx='60' cy='190' r='6'/%3E%3C/svg%3E") 0 0 / 240px 240px,
+    linear-gradient(180deg, #f7f9fc 0%, #fff 100%);
+}
+
+/* ── Concept of Sheet Metal → perforated, brushed sheet ── */
+section#cd-sheet-metal {
+  background:
+    radial-gradient(circle, rgba(13, 27, 42, 0.07) 1.6px, transparent 2.2px) 0 0 / 20px 20px,
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.55) 0 1px, transparent 1px 4px),
+    linear-gradient(135deg, #eef2f6 0%, #f8fafc 45%, #e9eef4 100%);
+}
+
+/* ── Weldments → steel truss + weld glow ── */
+section#cd-weldments {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='80' fill='none' stroke='%23ea580c' stroke-opacity='0.08' stroke-width='2'%3E%3Cpath d='M0 6h160M0 74h160M0 6L40 74L80 6L120 74L160 6M40 6v68M80 6v68M120 6v68'/%3E%3C/svg%3E") 0 0 / 160px 80px,
+    radial-gradient(circle at 92% 8%, rgba(249, 115, 22, 0.12), transparent 35%),
+    radial-gradient(circle at 6% 92%, rgba(249, 115, 22, 0.08), transparent 35%),
+    #faf8f6;
+}
+
+/* ── Concept of Drafting → drafting paper with fine + major grid (kept), plus title-block corner ── */
+section#cd-drafting {
+  background:
+    linear-gradient(rgba(21, 101, 192, 0.05) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(90deg, rgba(21, 101, 192, 0.05) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(rgba(21, 101, 192, 0.08) 1px, transparent 1px) 0 0 / 100px 100px,
+    linear-gradient(90deg, rgba(21, 101, 192, 0.08) 1px, transparent 1px) 0 0 / 100px 100px,
+    #f5f9ff;
+}
+
+/* keep the dimension-label patch matching the drafting paper */
+section#cd-drafting .dr-label {
+  background: #f5f9ff;
+}
